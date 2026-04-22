@@ -1,305 +1,335 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street Sole - Sneakers Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Street Sole</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
         }
-
         header {
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: white;
+            background-color: #1e1e1e;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #CCFF00;
+        }
+        header h1 {
+            color: #CCFF00;
+            text-shadow: 0 0 10px #CCFF00;
+            font-size: 2.5rem;
+        }
+        .hero {
             text-align: center;
             padding: 4rem 2rem;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
         }
-
-        header h1 {
+        .hero h2 {
             font-size: 3rem;
-            font-weight: 700;
+            color: #CCFF00;
+            text-shadow: 0 0 20px #CCFF00;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
-
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .products-grid {
+        .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-
-        .product {
-            background: white;
-            border-radius: 16px;
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(204, 255, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        .product:hover {
+        .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(204, 255, 0, 0.4);
         }
-
-        .product img {
+        .card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
         }
-
-        .product .info {
+        .card-content {
             padding: 1.5rem;
         }
-
-        .product h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .brand {
+            background-color: #CCFF00;
             color: #000;
-        }
-
-        .product .brand {
-            font-size: 1.1rem;
-            color: #666;
-            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
             margin-bottom: 0.5rem;
         }
-
-        .product .size {
+        .name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .code {
             color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .size {
+            color: #ccc;
             margin-bottom: 1rem;
         }
-
-        .product .price {
+        .price {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: #e74c3c;
-            margin-bottom: 1.5rem;
+            color: #CCFF00;
+            text-shadow: 0 0 10px #CCFF00;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
-
-        .buy-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-            padding: 1rem 2rem;
+        .buy {
+            display: block;
+            background-color: #CCFF00;
+            color: #000;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 1rem;
             text-align: center;
-            transition: transform 0.3s ease;
-            width: 100%;
+            border-radius: 8px;
+            font-weight: bold;
+            text-shadow: none;
+            transition: all 0.3s;
         }
-
-        .buy-btn:hover {
+        .buy:hover {
+            box-shadow: 0 0 20px #CCFF00;
             transform: scale(1.05);
         }
-
-        footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                margin: 2rem auto;
-                padding: 0 1rem;
-            }
+            .hero h2 { font-size: 2rem; }
+            .hero p { font-size: 1.2rem; }
+            .products { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); padding: 1rem; }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Street Sole</h1>
-        <p>A melhor seleção de sneakers streetwear</p>
     </header>
-    <div class="products">
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/pj001.jpg" alt="Air Jordan 1 High OG">
-            <h3>Air Jordan 1 High OG</h3>
-            <p>Nike</p>
-            <p class="product-code">PJ001</p>
-            <p class="price">$159.99</p>
-            <a href="checkout.html?code=PJ001" class="buy-btn">Comprar agora</a>
+    <section class="hero">
+        <h2>18 pares</h2>
+        <p>60€ a partir de</p>
+        <p>100% originais</p>
+    </section>
+    <section class="products">
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu" alt="Nike AF1 Animal Print">
+            <div class="card-content">
+                <div class="brand">Nike</div>
+                <h3 class="name">Nike AF1 Animal Print</h3>
+                <p class="code">DM5329-200</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€120</p>
+                <a href="https://buy.stripe.com/00w6oJ0PX9Nq0BObXbeIw00" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/nk002.jpg" alt="Nike Dunk Low">
-            <h3>Nike Dunk Low</h3>
-            <p>Nike</p>
-            <p class="product-code">NK002</p>
-            <p class="price">$120.00</p>
-            <a href="checkout.html?code=NK002" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps" alt="Nike AF1 Pixel Glacier">
+            <div class="card-content">
+                <div class="brand">Nike</div>
+                <h3 class="name">Nike AF1 Pixel Glacier</h3>
+                <p class="code">DH3855-400</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€85</p>
+                <a href="https://buy.stripe.com/8x200l2Y54t64S47GVeIw01" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/yz003.jpg" alt="Adidas Yeezy Boost 350">
-            <h3>Adidas Yeezy Boost 350</h3>
-            <p>Adidas</p>
-            <p class="product-code">YZ003</p>
-            <p class="price">$220.00</p>
-            <a href="checkout.html?code=YZ003" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan 1 Mid SE Grey Pine Green">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid SE Grey Pine Green</h3>
+                <p class="code">DC7294-103</p>
+                <p class="size">Tamanho 40.5</p>
+                <p class="price">€85</p>
+                <a href="https://buy.stripe.com/28E5kFcyF7Fi4S43qFeIw03" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/nb004.jpg" alt="New Balance 990v5">
-            <h3>New Balance 990v5</h3>
-            <p>New Balance</p>
-            <p class="product-code">NB004</p>
-            <p class="price">$199.99</p>
-            <a href="checkout.html?code=NB004" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan 1 Mid SE Grey Pine Green">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid SE Grey Pine Green</h3>
+                <p class="code">DC7294-103</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€85</p>
+                <a href="https://buy.stripe.com/dRmfZjgOVbVy4S4f9neIw04" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/af005.jpg" alt="Nike Air Force 1">
-            <h3>Nike Air Force 1</h3>
-            <p>Nike</p>
-            <p class="product-code">AF005</p>
-            <p class="price">$110.00</p>
-            <a href="checkout.html?code=AF005" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870183/WhatsApp_Image_2026-04-18_at_18.58.23_he7mdc.jpg" alt="Air Jordan 1 Mid Sonics">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid Sonics</h3>
+                <p class="code">554725-371</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€90</p>
+                <a href="https://buy.stripe.com/28EbJ38ip3p2ckw6CReIw05" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/pm006.jpg" alt="Puma RS-X">
-            <h3>Puma RS-X</h3>
-            <p>Puma</p>
-            <p class="product-code">PM006</p>
-            <p class="price">$130.00</p>
-            <a href="checkout.html?code=PM006" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871063/WhatsApp_Image_2026-04-18_at_19.00.26_1_a2h5r9.jpg" alt="Air Jordan 1 Mid">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid</h3>
+                <p class="code">554724-122</p>
+                <p class="size">Tamanho 42</p>
+                <p class="price">€90</p>
+                <a href="https://buy.stripe.com/8x26oJcyFe3GgAM5yNeIw06" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/cv007.jpg" alt="Converse Chuck 70">
-            <h3>Converse Chuck 70</h3>
-            <p>Converse</p>
-            <p class="product-code">CV007</p>
-            <p class="price">$80.00</p>
-            <a href="checkout.html?code=CV007" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870955/WhatsApp_Image_2026-04-18_at_19.08.52_1_vgwgms.jpg" alt="Air Jordan 1 Mid Gym Red">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid Gym Red</h3>
+                <p class="code">BQ6472-079</p>
+                <p class="size">Tamanho 42</p>
+                <p class="price">€90</p>
+                <a href="https://buy.stripe.com/14A8wRbuB2kY5W87GVeIw07" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/vs008.jpg" alt="Vans Old Skool">
-            <h3>Vans Old Skool</h3>
-            <p>Vans</p>
-            <p class="product-code">VS008</p>
-            <p class="price">$70.00</p>
-            <a href="checkout.html?code=VS008" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871162/WhatsApp_Image_2026-04-17_at_12.58.42_2_h76djk.jpg" alt="Jordan 1 Mid Dia de los Muertos">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Jordan 1 Mid Dia de los Muertos</h3>
+                <p class="code">DC0500-100</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€100</p>
+                <a href="https://buy.stripe.com/cNi8wR1U14t670ce5jeIw08" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/mx009.jpg" alt="Nike Air Max 90">
-            <h3>Nike Air Max 90</h3>
-            <p>Nike</p>
-            <p class="product-code">MX009</p>
-            <p class="price">$140.00</p>
-            <a href="checkout.html?code=MX009" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871211/WhatsApp_Image_2026-04-18_at_19.02.50_1_wh0urc.jpg" alt="Air Jordan 1 Retro Low OG UNC">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Retro Low OG UNC</h3>
+                <p class="code">CZ0775-104</p>
+                <p class="size">Tamanho 41</p>
+                <p class="price">€80</p>
+                <a href="https://buy.stripe.com/eVq4gB429cZCdoAbXbeIw09" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/st010.jpg" alt="Adidas Stan Smith">
-            <h3>Adidas Stan Smith</h3>
-            <p>Adidas</p>
-            <p class="product-code">ST010</p>
-            <p class="price">$100.00</p>
-            <a href="checkout.html?code=ST010" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871247/WhatsApp_Image_2026-04-18_at_19.06.55_ltsaw8.jpg" alt="Air Jordan 1 Mid SE Dutch">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid SE Dutch</h3>
+                <p class="code">CZ0774-300</p>
+                <p class="size">Tamanho 41</p>
+                <p class="price">€120</p>
+                <a href="https://buy.stripe.com/fZu4gB6ah6Be2JW7GVeIw0a" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/pj011.jpg" alt="Jordan 4 Retro">
-            <h3>Jordan 4 Retro</h3>
-            <p>Jordan</p>
-            <p class="product-code">PJ011</p>
-            <p class="price">$200.00</p>
-            <a href="checkout.html?code=PJ011" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871286/WhatsApp_Image_2026-04-18_at_19.11.12_bmonzn.jpg" alt="Air Jordan 1 Mid SE Newsprint">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Mid SE Newsprint</h3>
+                <p class="code">DQ6078-100</p>
+                <p class="size">Tamanho 42</p>
+                <p class="price">€85</p>
+                <a href="https://buy.stripe.com/7sYfZj8ipbVydoAd1feIw0b" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/rb012.jpg" alt="Reebok Classic Leather">
-            <h3>Reebok Classic Leather</h3>
-            <p>Reebok</p>
-            <p class="product-code">RB012</p>
-            <p class="price">$90.00</p>
-            <a href="checkout.html?code=RB012" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871325/WhatsApp_Image_2026-04-18_at_19.05.09_1_ute63e.jpg" alt="Nike Dunk Low by Bernardo">
+            <div class="card-content">
+                <div class="brand">Nike</div>
+                <h3 class="name">Nike Dunk Low by Bernardo</h3>
+                <p class="code">DO7413-991</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€90</p>
+                <a href="https://buy.stripe.com/cNicN7fKRcZC98ke5jeIw0c" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/as013.jpg" alt="Asics Gel-Kayano">
-            <h3>Asics Gel-Kayano</h3>
-            <p>Asics</p>
-            <p class="product-code">AS013</p>
-            <p class="price">$160.00</p>
-            <a href="checkout.html?code=AS013" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871362/WhatsApp_Image_2026-04-18_at_19.13.02_1_ayfvom.jpg" alt="Nike Dunk Low Rose Whisper">
+            <div class="card-content">
+                <div class="brand">Nike</div>
+                <h3 class="name">Nike Dunk Low Rose Whisper</h3>
+                <p class="code">DD1503-118</p>
+                <p class="size">Tamanho 39</p>
+                <p class="price">€75</p>
+                <a href="https://buy.stripe.com/9B63cx4296Be70c5yNeIw0d" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/fl014.jpg" alt="Fila Disruptor">
-            <h3>Fila Disruptor</h3>
-            <p>Fila</p>
-            <p class="product-code">FL014</p>
-            <p class="price">$85.00</p>
-            <a href="checkout.html?code=FL014" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871399/WhatsApp_Image_2026-04-18_at_19.15.00_1_oveznf.jpg" alt="Nike Dunk Low White Venice">
+            <div class="card-content">
+                <div class="brand">Nike</div>
+                <h3 class="name">Nike Dunk Low White Venice</h3>
+                <p class="code">DD1503-116</p>
+                <p class="size">Tamanho 39</p>
+                <p class="price">€90</p>
+                <a href="https://buy.stripe.com/dRm6oJgOVf7K84g2mBeIw0e" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ua015.jpg" alt="Under Armour Curry 8">
-            <h3>Under Armour Curry 8</h3>
-            <p>Under Armour</p>
-            <p class="product-code">UA015</p>
-            <p class="price">$150.00</p>
-            <a href="checkout.html?code=UA015" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871438/WhatsApp_Image_2026-04-18_at_19.16.42_occ7ko.jpg" alt="Air Jordan 1 Retro High OG Taxi">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Retro High OG Taxi</h3>
+                <p class="code">DD1503-118</p>
+                <p class="size">Tamanho 42</p>
+                <p class="price">€115</p>
+                <a href="https://buy.stripe.com/8x2cN7eGN2kY2JWe5jeIw0f" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/lb016.jpg" alt="LeBron 20">
-            <h3>LeBron 20</h3>
-            <p>Nike</p>
-            <p class="product-code">LB016</p>
-            <p class="price">$200.00</p>
-            <a href="checkout.html?code=LB016" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871475/WhatsApp_Image_2026-04-18_at_19.18.32_o6ftyj.jpg" alt="Air Jordan 1 Retro High OG Heritage">
+            <div class="card-content">
+                <div class="brand">Jordan</div>
+                <h3 class="name">Air Jordan 1 Retro High OG Heritage</h3>
+                <p class="code">555088-161</p>
+                <p class="size">Tamanho 40</p>
+                <p class="price">€90</p>
+                <a href="https://buy.stripe.com/8x200l8ip9Nq3O05yNeIw0g" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/kb017.jpg" alt="Kobe 6 Protro">
-            <h3>Kobe 6 Protro</h3>
-            <p>Nike</p>
-            <p class="product-code">KB017</p>
-            <p class="price">$190.00</p>
-            <a href="checkout.html?code=KB017" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871531/WhatsApp_Image_2026-04-22_at_10.42.59_o1yem1.jpg" alt="Nike Air Max">
+            <div class="card-content">
+                <div class="brand">Nike</div>
+                <h3 class="name">Nike Air Max</h3>
+                <p class="code">CD0461-001</p>
+                <p class="size">Tamanho 39</p>
+                <p class="price">€100</p>
+                <a href="https://buy.stripe.com/bJebJ3gOV0cQacof9neIw0h" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ts018.jpg" alt="Travis Scott Jordan 1">
-            <h3>Travis Scott Jordan 1</h3>
-            <p>Jordan</p>
-            <p class="product-code">TS018</p>
-            <p class="price">$300.00</p>
-            <a href="checkout.html?code=TS018" class="buy-btn">Comprar agora</a>
+        <div class="card">
+            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871575/WhatsApp_Image_2026-04-18_at_19.19.56_e4hdnp.jpg" alt="Adidas Campus 00s">
+            <div class="card-content">
+                <div class="brand">Adidas</div>
+                <h3 class="name">Adidas Campus 00s</h3>
+                <p class="code">H03472</p>
+                <p class="size">Tamanho 39</p>
+                <p class="price">€60</p>
+                <a href="https://buy.stripe.com/fZu28t0PX2kYbgsf9neIw0i" class="buy">Comprar</a>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ow019.jpg" alt="Off-White x Nike">
-            <h3>Off-White x Nike</h3>
-            <p>Off-White</p>
-            <p class="product-code">OW019</p>
-            <p class="price">$250.00</p>
-            <a href="checkout.html?code=OW019" class="buy-btn">Comprar agora</a>
-        </div>
-        <div class="product-card">
-            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ad020.jpg" alt="Adidas Ultraboost Light">
-            <h3>Adidas Ultraboost Light</h3>
-            <p>Adidas</p>
-            <p class="product-code">AD020</p>
-            <p class="price">$180.00</p>
-            <a href="checkout.html?code=AD020" class="buy-btn">Comprar agora</a>
-        </div>
-    </div>
+    </section>
 </body>
 </html>
