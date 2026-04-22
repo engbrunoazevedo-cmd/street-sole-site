@@ -1,181 +1,285 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Street Sole</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
         header {
-            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #333333 100%);
+            background: linear-gradient(135deg, #0f0f0f 0%, #2a2a2a 50%, #1a1a1a 100%);
             color: white;
-            padding: 20px 0;
+            padding: 1.5rem;
             text-align: center;
-        }
-        header h1 { font-size: 2.5em; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .checkout-product {
-            background: white;
             border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .checkout-product img {
-            width: 200px;
-            height: 200px;
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .checkout-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .product-summary {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .product-summary img {
+            width: 220px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .product-details h2 {
-            margin-bottom: 10px;
+        .product-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
             color: #333;
         }
-        .product-details .price {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 5px;
+        .shipping-form {
+            display: grid;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
         }
-        .product-details .size {
-            font-size: 1.2em;
-            color: #666;
-            font-weight: bold;
+        .shipping-form label {
+            font-weight: 500;
+            color: #555;
+            font-size: 0.95rem;
         }
-        #no-product {
-            text-align: center;
-            color: #ff0000;
-            font-size: 1.2em;
-            padding: 40px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .shipping-form input,
+        .shipping-form select {
+            padding: 1rem 1.2rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .shipping-form input:focus,
+        .shipping-form select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        label {
+        .pay-button {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-        input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-        }
-        input:focus { outline: none; border-color: #ff416c; }
-        .stripe-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(90deg, #ff0000 0%, #cc0000 100%);
+            padding: 1.3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .stripe-btn:hover { opacity: 0.9; }
+        .pay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            .checkout-container {
+                padding: 1.5rem;
+                margin: 0 10px;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Street Sole</h1>
-        <p>Os melhores sneakers para completar seu estilo streetwear</p>
     </header>
-    <div class="container">
-        <div id="product-display" class="checkout-product" style="display: none;"></div>
-        <div id="no-product" style="display: none;">Produto não encontrado.</div>
-        <form id="checkout-form">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" required>
-            <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco" required>
-            <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" name="cidade" required>
-            <label for="código postal">Código Postal:</label>
-            <input type="text" id="cep" name="cep" required>
-            <label for="pais">País:</label>
-            <input type="text" id="pais" name="pais" required>
-            <button type="button" class="stripe-btn" onclick="handleStripePay()">Pagar com Stripe</button>
+    <div class="checkout-container" id="checkout">
+        <div class="product-summary">
+            <img id="product-img" src="" alt="Produto">
+            <h2 id="product-name">Carregando...</h2>
+        </div>
+        <form class="shipping-form">
+            <div>
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label for="address">Endereço</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div>
+                <label for="city">Cidade</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div>
+                <label for="zip">CEP</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+            <div>
+                <label for="country">País</label>
+                <select id="country" name="country" required>
+                    <option value="">Selecione...</option>
+                    <option value="BR">Brasil</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="IT">Italy</option>
+                    <option value="ES">Spain</option>
+                    <option value="MX">Mexico</option>
+                    <option value="AR">Argentina</option>
+                </select>
+            </div>
         </form>
+        <a id="stripe-button" class="pay-button" href="#" target="_blank">Pagar com Stripe</a>
     </div>
     <script>
-        const imgBase = 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/';
-        const products = [
-            {code: 'DM5329-200', name: 'Nike AF1 Animal Print', price: '€120', size: '40', img: "https://res.cloudinary.com/duq0tf4da/image/upload/v1776868483/nike-af1-animal-print4_a7h9gu.jpg"},
-            {code: 'DH3855-400', name: 'Nike AF1 Pixel Glacier', price: '€85', size: '40', img: "https://res.cloudinary.com/duq0tf4da/image/upload/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg"},
-            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40.5', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green1'},
-            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green2'},
-            {code: '554725-371', name: 'Air Jordan 1 Mid Sonics', price: '€90', size: '40', img: imgBase + 'air-jordan-1-mid-sonics'},
-            {code: '554724-122', name: 'Air Jordan 1 Mid', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-554724'},
-            {code: 'BQ6472-079', name: 'Air Jordan 1 Mid Gym Red', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-gym-red'},
-            {code: 'DC0500-100', name: 'Nike Jordan 1 Mid Dia de los Muertos', price: '€100', size: '40', img: imgBase + 'jordan-1-mid-dia-de-los-muertos'},
-            {code: 'CZ0775-104', name: 'Air Jordan 1 Retro Low OG UNC', price: '€80', size: '41', img: imgBase + 'air-jordan-1-retro-low-og-unc'},
-            {code: 'CZ0774-300', name: 'Air Jordan 1 Mid SE Dutch', price: '€120', size: '41', img: imgBase + 'air-jordan-1-mid-se-dutch'},
-            {code: 'DQ6078-100', name: 'Air Jordan 1 Mid SE Newsprint', price: '€85', size: '42', img: imgBase + 'air-jordan-1-mid-se-newsprint'},
-            {code: 'DO7413-991', name: 'Nike Dunk Low by Bernardo', price: '€90', size: '40', img: imgBase + 'nike-dunk-low-by-bernardo'},
-            {code: 'DD1503-118', name: 'Nike Dunk Low Rose Whisper', price: '€75', size: '39', img: imgBase + 'nike-dunk-low-rose-whisper'},
-            {code: 'DD1503-116', name: 'Nike Dunk Low White Venice', price: '€90', size: '39', img: imgBase + 'nike-dunk-low-white-venice'},
-            {code: 'DD1503-118', name: 'Air Jordan 1 Retro High OG Taxi', price: '€115', size: '42', img: imgBase + 'air-jordan-1-retro-high-og-taxi'},
-            {code: '555088-161', name: 'Air Jordan 1 Retro High OG Heritage', price: '€90', size: '40', img: imgBase + 'air-jordan-1-retro-high-og-heritage'},
-            {code: 'CD0461-001', name: 'Nike Air Max', price: '€100', size: '39', img: imgBase + 'nike-air-max-cd0461'},
-            {code: 'H03472', name: 'Adidas Campus 00s', price: '€60', size: '39', img: imgBase + 'adidas-campus-00s-h03472'}
-        ];
-        let currentSku;
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            currentSku = urlParams.get('sku');
-            const productMap = {};
-            products.forEach(p => {
-                productMap[p.code] = p;
-            });
-            const productDiv = document.getElementById('product-display');
-            const noProductDiv = document.getElementById('no-product');
-            if (currentSku && productMap[currentSku]) {
-                const p = productMap[currentSku];
-                productDiv.innerHTML = `
-                    <img src="${p.img}" alt="${p.name}">
-                    <div class="product-details">
-                        <h2>${p.name}</h2>
-                        <p class="price">${p.price}</p>
-                        <p class="size">Tamanho: ${p.size}</p>
-                    </div>
-                `;
-                productDiv.style.display = 'flex';
-                noProductDiv.style.display = 'none';
-            } else {
-                noProductDiv.style.display = 'block';
-                productDiv.style.display = 'none';
+        const urlParams = new URLSearchParams(window.location.search);
+        const sku = urlParams.get('sku');
+
+        const products = {
+            'nike-air-jordan-1-high': {
+                name: 'Nike Air Jordan 1 High',
+                img: 'https://via.placeholder.com/300x300/111111/FFFFFF?text=Nike+Air+Jordan+1',
+                stripe: 'https://buy.stripe.com/5kE5mMtest1'
+            },
+            'adidas-yeezy-boost-350': {
+                name: 'Adidas Yeezy Boost 350',
+                img: 'https://via.placeholder.com/300x300/222222/FFFFFF?text=Yeezy+Boost+350',
+                stripe: 'https://buy.stripe.com/5kE5mMtest2'
+            },
+            'nike-dunk-low': {
+                name: 'Nike Dunk Low',
+                img: 'https://via.placeholder.com/300x300/333333/FFFFFF?text=Nike+Dunk+Low',
+                stripe: 'https://buy.stripe.com/5kE5mMtest3'
+            },
+            'new-balance-990v5': {
+                name: 'New Balance 990v5',
+                img: 'https://via.placeholder.com/300x300/444444/FFFFFF?text=NB+990v5',
+                stripe: 'https://buy.stripe.com/5kE5mMtest4'
+            },
+            'puma-rs-x': {
+                name: 'Puma RS-X',
+                img: 'https://via.placeholder.com/300x300/555555/FFFFFF?text=Puma+RS-X',
+                stripe: 'https://buy.stripe.com/5kE5mMtest5'
+            },
+            'vans-old-skool': {
+                name: 'Vans Old Skool',
+                img: 'https://via.placeholder.com/300x300/666666/FFFFFF?text=Vans+Old+Skool',
+                stripe: 'https://buy.stripe.com/5kE5mMtest6'
+            },
+            'converse-chuck-70': {
+                name: 'Converse Chuck 70',
+                img: 'https://via.placeholder.com/300x300/777777/FFFFFF?text=Chuck+70',
+                stripe: 'https://buy.stripe.com/5kE5mMtest7'
+            },
+            'reebok-classic-leather': {
+                name: 'Reebok Classic Leather',
+                img: 'https://via.placeholder.com/300x300/888888/FFFFFF?text=Reebok+Classic',
+                stripe: 'https://buy.stripe.com/5kE5mMtest8'
+            },
+            'asics-gel-kayano': {
+                name: 'Asics Gel-Kayano',
+                img: 'https://via.placeholder.com/300x300/999999/000000?text=Asics+Gel-Kayano',
+                stripe: 'https://buy.stripe.com/5kE5mMtest9'
+            },
+            'saucony-shadow-5000': {
+                name: 'Saucony Shadow 5000',
+                img: 'https://via.placeholder.com/300x300/aa0000/FFFFFF?text=Saucony+Shadow',
+                stripe: 'https://buy.stripe.com/5kE5mMtest10'
+            },
+            'nike-air-max-90': {
+                name: 'Nike Air Max 90',
+                img: 'https://via.placeholder.com/300x300/bb0000/FFFFFF?text=Air+Max+90',
+                stripe: 'https://buy.stripe.com/5kE5mMtest11'
+            },
+            'adidas-stan-smith': {
+                name: 'Adidas Stan Smith',
+                img: 'https://via.placeholder.com/300x300/cc0000/FFFFFF?text=Stan+Smith',
+                stripe: 'https://buy.stripe.com/5kE5mMtest12'
+            },
+            'nike-blazer-mid': {
+                name: 'Nike Blazer Mid',
+                img: 'https://via.placeholder.com/300x300/dd0000/FFFFFF?text=Blazer+Mid',
+                stripe: 'https://buy.stripe.com/5kE5mMtest13'
+            },
+            'fila-disruptor': {
+                name: 'Fila Disruptor',
+                img: 'https://via.placeholder.com/300x300/ee0000/FFFFFF?text=Fila+Disruptor',
+                stripe: 'https://buy.stripe.com/5kE5mMtest14'
+            },
+            'skechers-go-walk': {
+                name: 'Skechers Go Walk',
+                img: 'https://via.placeholder.com/300x300/ff0000/FFFFFF?text=Skechers+Go+Walk',
+                stripe: 'https://buy.stripe.com/5kE5mMtest15'
+            },
+            'under-armour-hovr': {
+                name: 'Under Armour HOVR',
+                img: 'https://via.placeholder.com/300x300/00aa00/FFFFFF?text=UA+HOVR',
+                stripe: 'https://buy.stripe.com/5kE5mMtest16'
+            },
+            'hoka-one-one-carbon-x': {
+                name: 'Hoka One One Carbon X',
+                img: 'https://via.placeholder.com/300x300/00bb00/FFFFFF?text=Hoka+Carbon+X',
+                stripe: 'https://buy.stripe.com/5kE5mMtest17'
+            },
+            'on-cloud-5': {
+                name: 'On Cloud 5',
+                img: 'https://via.placeholder.com/300x300/00cc00/FFFFFF?text=On+Cloud+5',
+                stripe: 'https://buy.stripe.com/5kE5mMtest18'
             }
-        });
-        function handleStripePay() {
-            const form = document.getElementById('checkout-form');
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-            const formData = new FormData(form);
-            const email = formData.get('email');
-            const stripeUrl = `https://buy.stripe.com/test_bVZ7WP6oYaPwaYA000?prefilled_email=${encodeURIComponent(email || '')}&client_reference_id=${encodeURIComponent(currentSku || '')}`;
-            window.location.href = stripeUrl;
+        };
+
+        const checkout = document.getElementById('checkout');
+        const productImg = document.getElementById('product-img');
+        const productName = document.getElementById('product-name');
+        const stripeButton = document.getElementById('stripe-button');
+
+        if (sku && products[sku]) {
+            const product = products[sku];
+            productImg.src = product.img;
+            productImg.alt = product.name;
+            productName.textContent = product.name;
+            stripeButton.href = product.stripe;
+        } else {
+            checkout.innerHTML = '<div class="error">Produto não encontrado. Verifique o SKU na URL.</div>';
         }
     </script>
 </body>
