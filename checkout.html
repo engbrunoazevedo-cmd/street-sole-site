@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,193 +11,114 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #2d1b69 50%, #1e3c72 100%);
-            color: white;
-            min-height: 100vh;
-            padding: 20px;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
         }
-        .container {
+        header {
+            background-color: #1e1e1e;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #CCFF00;
+        }
+        header h1 {
+            color: #CCFF00;
+            text-shadow: 0 0 10px #CCFF00;
+            font-size: 2.5rem;
+        }
+        .checkout {
             max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 2rem auto;
+            padding: 2rem;
         }
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
-        }
-        .product-info {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .product-info img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-        .product-code {
-            font-family: 'Courier New', monospace;
-            color: #00ff88;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .price {
-            font-size: 1.8em;
-            color: #4ecdc4;
-            font-weight: bold;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
         label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #CCFF00;
+            text-shadow: 0 0 5px #CCFF00;
             font-weight: bold;
-            opacity: 0.9;
         }
         input {
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            font-size: 16px;
+            width: 100%;
+            padding: 1rem;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
         }
         input:focus {
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            border-color: #CCFF00;
+            box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
         }
-        button {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
-            padding: 15px;
+        .pay-btn {
+            width: 100%;
+            background-color: #CCFF00;
+            color: #000;
             border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
+            padding: 1.5rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            text-transform: uppercase;
+            border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.3s;
-            margin-top: 10px;
+            text-shadow: none;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
         }
-        button:hover {
+        .pay-btn:hover {
+            box-shadow: 0 0 30px #CCFF00;
             transform: scale(1.02);
         }
-        .error {
-            color: #ff6b6b;
-            font-size: 14px;
-            display: none;
-        }
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
+            .checkout { padding: 1rem; margin: 1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Checkout</h1>
-        <div class="product-info" id="product-info" style="display: none;">
-            <img id="product-img" src="" alt="Product">
-            <h2 id="product-name"></h2>
-            <p id="product-brand"></p>
-            <p class="product-code" id="product-code"></p>
-            <p class="price" id="product-price"></p>
-        </div>
-        <form id="checkout-form">
-            <input type="hidden" id="hidden-code" name="code">
-            <label for="name">Nome completo:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="phone">Telefone:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <label for="address">Endereço:</label>
-            <input type="text" id="address" name="address" required>
-            <label for="city">Cidade:</label>
-            <input type="text" id="city" name="city" required>
-            <label for="zip">CEP:</label>
-            <input type="text" id="zip" name="zip" required>
-            <label for="country">País:</label>
-            <input type="text" id="country" name="country" value="Brasil" required>
-            <p class="error" id="error-msg"></p>
-            <button type="submit">Finalizar Compra</button>
+    <header>
+        <h1>Street Sole</h1>
+    </header>
+    <section class="checkout">
+        <h2 style="text-align: center; color: #CCFF00; text-shadow: 0 0 10px #CCFF00; margin-bottom: 2rem;">Finalizar Compra</h2>
+        <form>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" required>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País</label>
+                <input type="text" id="pais" required>
+            </div>
         </form>
-    </div>
-    <script>
-        const products = {
-            'PJ001': {name: 'Air Jordan 1 High OG', brand: 'Nike', price: '$159.99', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/pj001.jpg'},
-            'NK002': {name: 'Nike Dunk Low', brand: 'Nike', price: '$120.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/nk002.jpg'},
-            'YZ003': {name: 'Adidas Yeezy Boost 350', brand: 'Adidas', price: '$220.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/yz003.jpg'},
-            'NB004': {name: 'New Balance 990v5', brand: 'New Balance', price: '$199.99', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/nb004.jpg'},
-            'AF005': {name: 'Nike Air Force 1', brand: 'Nike', price: '$110.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/af005.jpg'},
-            'PM006': {name: 'Puma RS-X', brand: 'Puma', price: '$130.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/pm006.jpg'},
-            'CV007': {name: 'Converse Chuck 70', brand: 'Converse', price: '$80.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/cv007.jpg'},
-            'VS008': {name: 'Vans Old Skool', brand: 'Vans', price: '$70.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/vs008.jpg'},
-            'MX009': {name: 'Nike Air Max 90', brand: 'Nike', price: '$140.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/mx009.jpg'},
-            'ST010': {name: 'Adidas Stan Smith', brand: 'Adidas', price: '$100.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/st010.jpg'},
-            'PJ011': {name: 'Jordan 4 Retro', brand: 'Jordan', price: '$200.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/pj011.jpg'},
-            'RB012': {name: 'Reebok Classic Leather', brand: 'Reebok', price: '$90.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/rb012.jpg'},
-            'AS013': {name: 'Asics Gel-Kayano', brand: 'Asics', price: '$160.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/as013.jpg'},
-            'FL014': {name: 'Fila Disruptor', brand: 'Fila', price: '$85.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/fl014.jpg'},
-            'UA015': {name: 'Under Armour Curry 8', brand: 'Under Armour', price: '$150.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/ua015.jpg'},
-            'LB016': {name: 'LeBron 20', brand: 'Nike', price: '$200.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/lb016.jpg'},
-            'KB017': {name: 'Kobe 6 Protro', brand: 'Nike', price: '$190.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/kb017.jpg'},
-            'TS018': {name: 'Travis Scott Jordan 1', brand: 'Jordan', price: '$300.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/ts018.jpg'},
-            'OW019': {name: 'Off-White x Nike', brand: 'Off-White', price: '$250.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/ow019.jpg'},
-            'AD020': {name: 'Adidas Ultraboost Light', brand: 'Adidas', price: '$180.00', img: 'https://res.cloudinary.com/streetsole/image/upload/v1/products/ad020.jpg'}
-        };
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-
-        if (code && products[code]) {
-            const prod = products[code];
-            document.getElementById('product-img').src = prod.img;
-            document.getElementById('product-name').textContent = prod.name;
-            document.getElementById('product-brand').textContent = prod.brand;
-            document.getElementById('product-code').textContent = code;
-            document.getElementById('product-price').textContent = prod.price;
-            document.getElementById('hidden-code').value = code;
-            document.getElementById('product-info').style.display = 'block';
-        } else {
-            document.getElementById('error-msg').textContent = 'Produto não encontrado. Volte à loja.';
-            document.getElementById('error-msg').style.display = 'block';
-            document.getElementById('checkout-form').style.display = 'none';
-        }
-
-        document.getElementById('checkout-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const code = formData.get('code');
-
-            if (!email || !phone || !code) {
-                document.getElementById('error-msg').textContent = 'Preencha todos os campos obrigatórios.';
-                document.getElementById('error-msg').style.display = 'block';
-                return;
-            }
-
-            const stripeUrl = `https://buy.stripe.com/test_8wMwbM5Yb7vPqWd9AA?client_reference_id=${code}&prefilled_email=${encodeURIComponent(email)}&prefilled_phone=${encodeURIComponent(phone)}`;
-            window.location.href = stripeUrl;
-        });
-    </script>
+        <a href="https://buy.stripe.com/fZu28t0PX2kYbgsf9neIw0i" class="pay-btn">Pagar com Stripe</a>
+    </section>
 </body>
 </html>
