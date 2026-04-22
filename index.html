@@ -5,327 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Street Sole</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
         header {
-            background-color: #1e1e1e;
-            padding: 1rem 2rem;
+            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #333333 100%);
+            color: white;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 2px solid #CCFF00;
         }
-        header h1 {
-            color: #CCFF00;
-            text-shadow: 0 0 10px #CCFF00;
-            font-size: 2.5rem;
-        }
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #121212, #1e1e1e);
-        }
-        .hero h2 {
-            font-size: 3rem;
-            color: #CCFF00;
-            text-shadow: 0 0 20px #CCFF00;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .products {
+        header h1 { font-size: 2.5em; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 30px;
         }
-        .card {
-            background-color: #1e1e1e;
-            border-radius: 12px;
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(204, 255, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(204, 255, 0, 0.4);
-        }
-        .card img {
+        .product-card:hover { transform: translateY(-10px); }
+        .product-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
         }
-        .card-content {
-            padding: 1.5rem;
+        .product-card h3 {
+            padding: 15px 20px 10px;
+            font-size: 1.2em;
+            color: #333;
         }
-        .brand {
-            background-color: #CCFF00;
-            color: #000;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-        .name {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .code {
+        .product-code {
+            padding: 0 20px 5px;
             color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        .size {
-            color: #ccc;
-            margin-bottom: 1rem;
+            font-size: 0.9em;
+            font-family: monospace;
         }
         .price {
-            font-size: 1.5rem;
-            color: #CCFF00;
-            text-shadow: 0 0 10px #CCFF00;
+            padding: 0 20px 5px;
+            font-size: 1.4em;
             font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .buy {
-            display: block;
-            background-color: #CCFF00;
             color: #000;
-            text-decoration: none;
-            padding: 1rem;
-            text-align: center;
-            border-radius: 8px;
+        }
+        .size {
+            padding: 0 20px 15px;
+            color: #666;
             font-weight: bold;
-            text-shadow: none;
-            transition: all 0.3s;
         }
-        .buy:hover {
-            box-shadow: 0 0 20px #CCFF00;
-            transform: scale(1.05);
+        .buy-btn {
+            display: block;
+            margin: 0 20px 20px;
+            padding: 15px;
+            background: linear-gradient(90deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: opacity 0.3s;
         }
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 2rem; }
-            .hero p { font-size: 1.2rem; }
-            .products { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); padding: 1rem; }
-        }
+        .buy-btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
     <header>
         <h1>Street Sole</h1>
-        <p>Os melhores sneakers para completar seu estilo streetwear</p>
     </header>
-    <section class="products">
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu" alt="Nike AF1 Animal Print">
-            <div class="card-content">
-                <div class="brand">Nike</div>
-                <h3 class="name">Nike AF1 Animal Print</h3>
-                <p class="code">DM5329-200</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€120</p>
-                <a href="https://buy.stripe.com/00w6oJ0PX9Nq0BObXbeIw00" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps" alt="Nike AF1 Pixel Glacier">
-            <div class="card-content">
-                <div class="brand">Nike</div>
-                <h3 class="name">Nike AF1 Pixel Glacier</h3>
-                <p class="code">DH3855-400</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€85</p>
-                <a href="https://buy.stripe.com/8x200l2Y54t64S47GVeIw01" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan 1 Mid SE Grey Pine Green">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid SE Grey Pine Green</h3>
-                <p class="code">DC7294-103</p>
-                <p class="size">Tamanho 40.5</p>
-                <p class="price">€85</p>
-                <a href="https://buy.stripe.com/28E5kFcyF7Fi4S43qFeIw03" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan 1 Mid SE Grey Pine Green">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid SE Grey Pine Green</h3>
-                <p class="code">DC7294-103</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€85</p>
-                <a href="https://buy.stripe.com/dRmfZjgOVbVy4S4f9neIw04" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870183/WhatsApp_Image_2026-04-18_at_18.58.23_he7mdc.jpg" alt="Air Jordan 1 Mid Sonics">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid Sonics</h3>
-                <p class="code">554725-371</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€90</p>
-                <a href="https://buy.stripe.com/28EbJ38ip3p2ckw6CReIw05" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871063/WhatsApp_Image_2026-04-18_at_19.00.26_1_a2h5r9.jpg" alt="Air Jordan 1 Mid">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid</h3>
-                <p class="code">554724-122</p>
-                <p class="size">Tamanho 42</p>
-                <p class="price">€90</p>
-                <a href="https://buy.stripe.com/8x26oJcyFe3GgAM5yNeIw06" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870955/WhatsApp_Image_2026-04-18_at_19.08.52_1_vgwgms.jpg" alt="Air Jordan 1 Mid Gym Red">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid Gym Red</h3>
-                <p class="code">BQ6472-079</p>
-                <p class="size">Tamanho 42</p>
-                <p class="price">€90</p>
-                <a href="https://buy.stripe.com/14A8wRbuB2kY5W87GVeIw07" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871162/WhatsApp_Image_2026-04-17_at_12.58.42_2_h76djk.jpg" alt="Jordan 1 Mid Dia de los Muertos">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Jordan 1 Mid Dia de los Muertos</h3>
-                <p class="code">DC0500-100</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€100</p>
-                <a href="https://buy.stripe.com/cNi8wR1U14t670ce5jeIw08" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871211/WhatsApp_Image_2026-04-18_at_19.02.50_1_wh0urc.jpg" alt="Air Jordan 1 Retro Low OG UNC">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Retro Low OG UNC</h3>
-                <p class="code">CZ0775-104</p>
-                <p class="size">Tamanho 41</p>
-                <p class="price">€80</p>
-                <a href="https://buy.stripe.com/eVq4gB429cZCdoAbXbeIw09" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871247/WhatsApp_Image_2026-04-18_at_19.06.55_ltsaw8.jpg" alt="Air Jordan 1 Mid SE Dutch">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid SE Dutch</h3>
-                <p class="code">CZ0774-300</p>
-                <p class="size">Tamanho 41</p>
-                <p class="price">€120</p>
-                <a href="https://buy.stripe.com/fZu4gB6ah6Be2JW7GVeIw0a" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871286/WhatsApp_Image_2026-04-18_at_19.11.12_bmonzn.jpg" alt="Air Jordan 1 Mid SE Newsprint">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Mid SE Newsprint</h3>
-                <p class="code">DQ6078-100</p>
-                <p class="size">Tamanho 42</p>
-                <p class="price">€85</p>
-                <a href="https://buy.stripe.com/7sYfZj8ipbVydoAd1feIw0b" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871325/WhatsApp_Image_2026-04-18_at_19.05.09_1_ute63e.jpg" alt="Nike Dunk Low by Bernardo">
-            <div class="card-content">
-                <div class="brand">Nike</div>
-                <h3 class="name">Nike Dunk Low by Bernardo</h3>
-                <p class="code">DO7413-991</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€90</p>
-                <a href="https://buy.stripe.com/cNicN7fKRcZC98ke5jeIw0c" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871362/WhatsApp_Image_2026-04-18_at_19.13.02_1_ayfvom.jpg" alt="Nike Dunk Low Rose Whisper">
-            <div class="card-content">
-                <div class="brand">Nike</div>
-                <h3 class="name">Nike Dunk Low Rose Whisper</h3>
-                <p class="code">DD1503-118</p>
-                <p class="size">Tamanho 39</p>
-                <p class="price">€75</p>
-                <a href="https://buy.stripe.com/9B63cx4296Be70c5yNeIw0d" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871399/WhatsApp_Image_2026-04-18_at_19.15.00_1_oveznf.jpg" alt="Nike Dunk Low White Venice">
-            <div class="card-content">
-                <div class="brand">Nike</div>
-                <h3 class="name">Nike Dunk Low White Venice</h3>
-                <p class="code">DD1503-116</p>
-                <p class="size">Tamanho 39</p>
-                <p class="price">€90</p>
-                <a href="https://buy.stripe.com/dRm6oJgOVf7K84g2mBeIw0e" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871438/WhatsApp_Image_2026-04-18_at_19.16.42_occ7ko.jpg" alt="Air Jordan 1 Retro High OG Taxi">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Retro High OG Taxi</h3>
-                <p class="code">DD1503-118</p>
-                <p class="size">Tamanho 42</p>
-                <p class="price">€115</p>
-                <a href="https://buy.stripe.com/8x2cN7eGN2kY2JWe5jeIw0f" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871475/WhatsApp_Image_2026-04-18_at_19.18.32_o6ftyj.jpg" alt="Air Jordan 1 Retro High OG Heritage">
-            <div class="card-content">
-                <div class="brand">Jordan</div>
-                <h3 class="name">Air Jordan 1 Retro High OG Heritage</h3>
-                <p class="code">555088-161</p>
-                <p class="size">Tamanho 40</p>
-                <p class="price">€90</p>
-                <a href="https://buy.stripe.com/8x200l8ip9Nq3O05yNeIw0g" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871531/WhatsApp_Image_2026-04-22_at_10.42.59_o1yem1.jpg" alt="Nike Air Max">
-            <div class="card-content">
-                <div class="brand">Nike</div>
-                <h3 class="name">Nike Air Max</h3>
-                <p class="code">CD0461-001</p>
-                <p class="size">Tamanho 39</p>
-                <p class="price">€100</p>
-                <a href="https://buy.stripe.com/bJebJ3gOV0cQacof9neIw0h" class="buy">Comprar</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871575/WhatsApp_Image_2026-04-18_at_19.19.56_e4hdnp.jpg" alt="Adidas Campus 00s">
-            <div class="card-content">
-                <div class="brand">Adidas</div>
-                <h3 class="name">Adidas Campus 00s</h3>
-                <p class="code">H03472</p>
-                <p class="size">Tamanho 39</p>
-                <p class="price">€60</p>
-                <a href="https://buy.stripe.com/fZu28t0PX2kYbgsf9neIw0i" class="buy">Comprar</a>
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <div id="products-grid" class="grid"></div>
+    </div>
+    <script>
+        const imgBase = 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/';
+        const products = [
+            {code: 'DM5329-200', name: 'Nike AF1 Animal Print', price: '€120', size: '40', img: imgBase + 'nike-af1-animal-print4_a7h9gu'},
+            {code: 'DH3855-400', name: 'Nike AF1 Pixel Glacier', price: '€85', size: '40', img: imgBase + 'nike-af1-pixel-glacier'},
+            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40.5', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green1'},
+            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green2'},
+            {code: '554725-371', name: 'Air Jordan 1 Mid Sonics', price: '€90', size: '40', img: imgBase + 'air-jordan-1-mid-sonics'},
+            {code: '554724-122', name: 'Air Jordan 1 Mid', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-554724'},
+            {code: 'BQ6472-079', name: 'Air Jordan 1 Mid Gym Red', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-gym-red'},
+            {code: 'DC0500-100', name: 'Nike Jordan 1 Mid Dia de los Muertos', price: '€100', size: '40', img: imgBase + 'jordan-1-mid-dia-de-los-muertos'},
+            {code: 'CZ0775-104', name: 'Air Jordan 1 Retro Low OG UNC', price: '€80', size: '41', img: imgBase + 'air-jordan-1-retro-low-og-unc'},
+            {code: 'CZ0774-300', name: 'Air Jordan 1 Mid SE Dutch', price: '€120', size: '41', img: imgBase + 'air-jordan-1-mid-se-dutch'},
+            {code: 'DQ6078-100', name: 'Air Jordan 1 Mid SE Newsprint', price: '€85', size: '42', img: imgBase + 'air-jordan-1-mid-se-newsprint'},
+            {code: 'DO7413-991', name: 'Nike Dunk Low by Bernardo', price: '€90', size: '40', img: imgBase + 'nike-dunk-low-by-bernardo'},
+            {code: 'DD1503-118', name: 'Nike Dunk Low Rose Whisper', price: '€75', size: '39', img: imgBase + 'nike-dunk-low-rose-whisper'},
+            {code: 'DD1503-116', name: 'Nike Dunk Low White Venice', price: '€90', size: '39', img: imgBase + 'nike-dunk-low-white-venice'},
+            {code: 'DD1503-118', name: 'Air Jordan 1 Retro High OG Taxi', price: '€115', size: '42', img: imgBase + 'air-jordan-1-retro-high-og-taxi'},
+            {code: '555088-161', name: 'Air Jordan 1 Retro High OG Heritage', price: '€90', size: '40', img: imgBase + 'air-jordan-1-retro-high-og-heritage'},
+            {code: 'CD0461-001', name: 'Nike Air Max', price: '€100', size: '39', img: imgBase + 'nike-air-max-cd0461'},
+            {code: 'H03472', name: 'Adidas Campus 00s', price: '€60', size: '39', img: imgBase + 'adidas-campus-00s-h03472'}
+        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('products-grid');
+            products.forEach(p => {
+                const card = `
+                    <div class="product-card">
+                        <img src="${p.img}" alt="${p.name}">
+                        <h3>${p.name}</h3>
+                        <p class="product-code">${p.code}</p>
+                        <p class="price">${p.price}</p>
+                        <p class="size">Tamanho ${p.size}</p>
+                        <a href="checkout.html?sku=${p.code}" class="buy-btn">Comprar</a>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        });
+    </script>
 </body>
 </html>
