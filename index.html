@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Sole - Streetwear Sneakers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #2d1b69 50%, #1e3c72 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .product-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        .product-card p {
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+        .product-code {
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s;
+        }
+        .buy-btn:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Street Sole</h1>
+        <p>A melhor seleção de sneakers streetwear</p>
+    </header>
+    <div class="products">
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/pj001.jpg" alt="Air Jordan 1 High OG">
+            <h3>Air Jordan 1 High OG</h3>
+            <p>Nike</p>
+            <p class="product-code">PJ001</p>
+            <p class="price">$159.99</p>
+            <a href="checkout.html?code=PJ001" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/nk002.jpg" alt="Nike Dunk Low">
+            <h3>Nike Dunk Low</h3>
+            <p>Nike</p>
+            <p class="product-code">NK002</p>
+            <p class="price">$120.00</p>
+            <a href="checkout.html?code=NK002" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/yz003.jpg" alt="Adidas Yeezy Boost 350">
+            <h3>Adidas Yeezy Boost 350</h3>
+            <p>Adidas</p>
+            <p class="product-code">YZ003</p>
+            <p class="price">$220.00</p>
+            <a href="checkout.html?code=YZ003" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/nb004.jpg" alt="New Balance 990v5">
+            <h3>New Balance 990v5</h3>
+            <p>New Balance</p>
+            <p class="product-code">NB004</p>
+            <p class="price">$199.99</p>
+            <a href="checkout.html?code=NB004" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/af005.jpg" alt="Nike Air Force 1">
+            <h3>Nike Air Force 1</h3>
+            <p>Nike</p>
+            <p class="product-code">AF005</p>
+            <p class="price">$110.00</p>
+            <a href="checkout.html?code=AF005" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/pm006.jpg" alt="Puma RS-X">
+            <h3>Puma RS-X</h3>
+            <p>Puma</p>
+            <p class="product-code">PM006</p>
+            <p class="price">$130.00</p>
+            <a href="checkout.html?code=PM006" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/cv007.jpg" alt="Converse Chuck 70">
+            <h3>Converse Chuck 70</h3>
+            <p>Converse</p>
+            <p class="product-code">CV007</p>
+            <p class="price">$80.00</p>
+            <a href="checkout.html?code=CV007" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/vs008.jpg" alt="Vans Old Skool">
+            <h3>Vans Old Skool</h3>
+            <p>Vans</p>
+            <p class="product-code">VS008</p>
+            <p class="price">$70.00</p>
+            <a href="checkout.html?code=VS008" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/mx009.jpg" alt="Nike Air Max 90">
+            <h3>Nike Air Max 90</h3>
+            <p>Nike</p>
+            <p class="product-code">MX009</p>
+            <p class="price">$140.00</p>
+            <a href="checkout.html?code=MX009" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/st010.jpg" alt="Adidas Stan Smith">
+            <h3>Adidas Stan Smith</h3>
+            <p>Adidas</p>
+            <p class="product-code">ST010</p>
+            <p class="price">$100.00</p>
+            <a href="checkout.html?code=ST010" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/pj011.jpg" alt="Jordan 4 Retro">
+            <h3>Jordan 4 Retro</h3>
+            <p>Jordan</p>
+            <p class="product-code">PJ011</p>
+            <p class="price">$200.00</p>
+            <a href="checkout.html?code=PJ011" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/rb012.jpg" alt="Reebok Classic Leather">
+            <h3>Reebok Classic Leather</h3>
+            <p>Reebok</p>
+            <p class="product-code">RB012</p>
+            <p class="price">$90.00</p>
+            <a href="checkout.html?code=RB012" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/as013.jpg" alt="Asics Gel-Kayano">
+            <h3>Asics Gel-Kayano</h3>
+            <p>Asics</p>
+            <p class="product-code">AS013</p>
+            <p class="price">$160.00</p>
+            <a href="checkout.html?code=AS013" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/fl014.jpg" alt="Fila Disruptor">
+            <h3>Fila Disruptor</h3>
+            <p>Fila</p>
+            <p class="product-code">FL014</p>
+            <p class="price">$85.00</p>
+            <a href="checkout.html?code=FL014" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ua015.jpg" alt="Under Armour Curry 8">
+            <h3>Under Armour Curry 8</h3>
+            <p>Under Armour</p>
+            <p class="product-code">UA015</p>
+            <p class="price">$150.00</p>
+            <a href="checkout.html?code=UA015" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/lb016.jpg" alt="LeBron 20">
+            <h3>LeBron 20</h3>
+            <p>Nike</p>
+            <p class="product-code">LB016</p>
+            <p class="price">$200.00</p>
+            <a href="checkout.html?code=LB016" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/kb017.jpg" alt="Kobe 6 Protro">
+            <h3>Kobe 6 Protro</h3>
+            <p>Nike</p>
+            <p class="product-code">KB017</p>
+            <p class="price">$190.00</p>
+            <a href="checkout.html?code=KB017" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ts018.jpg" alt="Travis Scott Jordan 1">
+            <h3>Travis Scott Jordan 1</h3>
+            <p>Jordan</p>
+            <p class="product-code">TS018</p>
+            <p class="price">$300.00</p>
+            <a href="checkout.html?code=TS018" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ow019.jpg" alt="Off-White x Nike">
+            <h3>Off-White x Nike</h3>
+            <p>Off-White</p>
+            <p class="product-code">OW019</p>
+            <p class="price">$250.00</p>
+            <a href="checkout.html?code=OW019" class="buy-btn">Comprar agora</a>
+        </div>
+        <div class="product-card">
+            <img src="https://res.cloudinary.com/streetsole/image/upload/v1/products/ad020.jpg" alt="Adidas Ultraboost Light">
+            <h3>Adidas Ultraboost Light</h3>
+            <p>Adidas</p>
+            <p class="product-code">AD020</p>
+            <p class="price">$180.00</p>
+            <a href="checkout.html?code=AD020" class="buy-btn">Comprar agora</a>
+        </div>
+    </div>
+</body>
+</html>
