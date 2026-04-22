@@ -4,118 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Street Sole</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
-        header {
-            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #333333 100%);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        header h1 { font-size: 2.5em; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        .product-card:hover { transform: translateY(-10px); }
-        .product-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        .product-card h3 {
-            padding: 15px 20px 10px;
-            font-size: 1.2em;
-            color: #333;
-        }
-        .product-code {
-            padding: 0 20px 5px;
-            color: #888;
-            font-size: 0.9em;
-            font-family: monospace;
-        }
-        .price {
-            padding: 0 20px 5px;
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #000;
-        }
-        .size {
-            padding: 0 20px 15px;
-            color: #666;
-            font-weight: bold;
-        }
-        .buy-btn {
-            display: block;
-            margin: 0 20px 20px;
-            padding: 15px;
-            background: linear-gradient(90deg, #ff0000 0%, #cc0000 100%);
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: opacity 0.3s;
-        }
-        .buy-btn:hover { opacity: 0.9; }
+        * { box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: #0d0d0d; color: white; margin: 0; line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; margin: 0; }
+        .accent { color: #e8f542; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 1rem 0; border-bottom: 1px solid #333; }
+        header h1 { font-size: clamp(2rem, 5vw, 4rem); color: #e8f542; }
+        .hero { padding: 6rem 0; text-align: center; background: radial-gradient(circle at center, rgba(232,245,66,0.1) 0%, transparent 70%); }
+        .stats { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+        .stat { min-width: 150px; }
+        .stat .num { font-size: clamp(3rem, 10vw, 6rem); color: #e8f542; display: block; font-family: 'Bebas Neue'; font-weight: 400; }
+        .filters { padding: 3rem 0; }
+        .filters h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .filter-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .filter-buttons button { padding: 0.75rem 1.5rem; background: none; color: white; border: 2px solid #e8f542; cursor: pointer; font-family: 'DM Sans'; font-weight: 500; border-radius: 5px; transition: all 0.3s; }
+        .filter-buttons button:hover, .filter-buttons button.active { background: #e8f542; color: #0d0d0d; }
+        .products { padding: 3rem 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .product-card { background: #1a1a1a; padding: 1.5rem; border-radius: 15px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(232,245,66,0.2); }
+        .product-card img { width: 100%; height: 280px; object-fit: cover; border-radius: 10px; }
+        .product-card h3 { margin: 1rem 0 0.5rem; font-size: 1.3rem; }
+        .product-card .brand { color: #e8f542; font-weight: 500; margin: 0 0 0.5rem; }
+        .product-card .price { font-size: 1.8rem; font-weight: bold; color: #e8f542; margin: 0.5rem 0 1rem; }
+        .btn { display: inline-block; background: #e8f542; color: #0d0d0d; padding: 1rem 2rem; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 5px; transition: all 0.3s; }
+        .btn:hover { background: #ffed4a; transform: scale(1.05); }
+        @media (max-width: 768px) { .stats { gap: 2rem; } .filter-buttons { flex-direction: column; align-items: center; } }
     </style>
 </head>
 <body>
     <header>
-        <h1>Street Sole</h1>
-        <p>Os melhores sneakers para completar seu estilo streetwear</p>
+        <div class="container">
+            <h1>Street Sole</h1>
+        </div>
     </header>
-    <div class="container">
-        <div id="products-grid" class="grid"></div>
-    </div>
+    <section class="hero">
+        <div class="container">
+            <div class="stats">
+                <div class="stat"><span class="num">18</span>pares</div>
+                <div class="stat"><span class="num">60€</span></div>
+                <div class="stat"><span class="num">100%</span><br>Originais</div>
+            </div>
+        </div>
+    </section>
+    <section class="filters">
+        <div class="container">
+            <h2 class="accent">Filtros por Marca</h2>
+            <div class="filter-buttons">
+                <button data-brand="all" class="active">Todos</button>
+                <button data-brand="Nike">Nike</button>
+                <button data-brand="Jordan">Jordan</button>
+                <button data-brand="Adidas">Adidas</button>
+            </div>
+        </div>
+    </section>
+    <section class="products">
+        <div class="container">
+            <div class="grid" id="productGrid"></div>
+        </div>
+    </section>
     <script>
-        const imgBase = 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/';
         const products = [
-            {code: 'DM5329-200', name: 'Nike AF1 Animal Print', price: '€120', size: '40', img src="https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu" alt="Nike Air Force 1"},
-            {code: 'DH3855-400', name: 'Nike AF1 Pixel Glacier', price: '€85', size: '40', img src="https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps" alt="Nike Air Force 1"},
-            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40.5', img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan"},
-            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green2'},
-            {code: '554725-371', name: 'Air Jordan 1 Mid Sonics', price: '€90', size: '40', img: imgBase + 'air-jordan-1-mid-sonics'},
-            {code: '554724-122', name: 'Air Jordan 1 Mid', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-554724'},
-            {code: 'BQ6472-079', name: 'Air Jordan 1 Mid Gym Red', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-gym-red'},
-            {code: 'DC0500-100', name: 'Nike Jordan 1 Mid Dia de los Muertos', price: '€100', size: '40', img: imgBase + 'jordan-1-mid-dia-de-los-muertos'},
-            {code: 'CZ0775-104', name: 'Air Jordan 1 Retro Low OG UNC', price: '€80', size: '41', img: imgBase + 'air-jordan-1-retro-low-og-unc'},
-            {code: 'CZ0774-300', name: 'Air Jordan 1 Mid SE Dutch', price: '€120', size: '41', img: imgBase + 'air-jordan-1-mid-se-dutch'},
-            {code: 'DQ6078-100', name: 'Air Jordan 1 Mid SE Newsprint', price: '€85', size: '42', img: imgBase + 'air-jordan-1-mid-se-newsprint'},
-            {code: 'DO7413-991', name: 'Nike Dunk Low by Bernardo', price: '€90', size: '40', img: imgBase + 'nike-dunk-low-by-bernardo'},
-            {code: 'DD1503-118', name: 'Nike Dunk Low Rose Whisper', price: '€75', size: '39', img: imgBase + 'nike-dunk-low-rose-whisper'},
-            {code: 'DD1503-116', name: 'Nike Dunk Low White Venice', price: '€90', size: '39', img: imgBase + 'nike-dunk-low-white-venice'},
-            {code: 'DD1503-118', name: 'Air Jordan 1 Retro High OG Taxi', price: '€115', size: '42', img: imgBase + 'air-jordan-1-retro-high-og-taxi'},
-            {code: '555088-161', name: 'Air Jordan 1 Retro High OG Heritage', price: '€90', size: '40', img: imgBase + 'air-jordan-1-retro-high-og-heritage'},
-            {code: 'CD0461-001', name: 'Nike Air Max', price: '€100', size: '39', img: imgBase + 'nike-air-max-cd0461'},
-            {code: 'H03472', name: 'Adidas Campus 00s', price: '€60', size: '39', img: imgBase + 'adidas-campus-00s-h03472'}
+            {sku:'p1', brand:'Nike', name:'Nike AF1 Animal Print', size:40, code: DM5329-200, price:120, image:'https://res.cloudinary.com/duq0tf4da/image/upload/v1776868483/nike-af1-animal-print4_a7h9gu.jpg', stripe:'https://buy.stripe.com/00w6oJ0PX9Nq0BObXbeIw00'},
+            {sku:'p2', brand:'Nike', name:'Nike Air Force 1 Pixel Glacier, size:40, price:85, image:'https://res.cloudinary.com/duq0tf4da/image/upload/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg', stripe:'https://buy.stripe.com/8x200l2Y54t64S47GVeIw01'},
+            {sku:'p3', brand:'Jordan', name:'Air Jordan 1 Mid SE Grey Pine Green', size:40,5, price:85, image:'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg', stripe:'https://buy.stripe.com/28E5kFcyF7Fi4S43qFeIw03'},
+            {sku:'p4', brand:'Nike', name:'Nike Dunk Low', price:119, image:'https://source.unsplash.com/400x400/?dunk,sneaker', stripe:'https://buy.stripe.com/abcde4'},
+            {sku:'p5', brand:'Adidas', name:'Adidas Yeezy Boost 350', price:199, image:'https://source.unsplash.com/400x400/?yeezy,sneaker', stripe:'https://buy.stripe.com/abcde5'},
+            {sku:'p6', brand:'New Balance', name:'New Balance 990v6', price:149, image:'https://source.unsplash.com/400x400/?newbalance,sneaker', stripe:'https://buy.stripe.com/abcde6'},
+            {sku:'p7', brand:'Nike', name:'Nike Air Max 97', price:169, image:'https://source.unsplash.com/400x400/?airmax,sneaker', stripe:'https://buy.stripe.com/abcde7'},
+            {sku:'p8', brand:'Jordan', name:'Jordan 4 Retro', price:189, image:'https://source.unsplash.com/400x400/?jordan4,sneaker', stripe:'https://buy.stripe.com/abcde8'},
+            {sku:'p9', brand:'Puma', name:'Puma Suede Classic', price:89, image:'https://source.unsplash.com/400x400/?puma,sneaker', stripe:'https://buy.stripe.com/abcde9'},
+            {sku:'p10', brand:'Nike', name:'Nike SB Dunk', price:129, image:'https://source.unsplash.com/400x400/?sb,dunk,sneaker', stripe:'https://buy.stripe.com/abcde10'},
+            {sku:'p11', brand:'Adidas', name:'Adidas Forum Low', price:99, image:'https://source.unsplash.com/400x400/?forum,sneaker', stripe:'https://buy.stripe.com/abcde11'},
+            {sku:'p12', brand:'Converse', name:'Converse Chuck 70', price:79, image:'https://source.unsplash.com/400x400/?chuck,sneaker', stripe:'https://buy.stripe.com/abcde12'},
+            {sku:'p13', brand:'Nike', name:'Nike LeBron 21', price:199, image:'https://source.unsplash.com/400x400/?lebron,sneaker', stripe:'https://buy.stripe.com/abcde13'},
+            {sku:'p14', brand:'Jordan', name:'Jordan 11 Retro', price:219, image:'https://source.unsplash.com/400x400/?jordan11,sneaker', stripe:'https://buy.stripe.com/abcde14'},
+            {sku:'p15', brand:'Vans', name:'Vans Old Skool', price:69, image:'https://source.unsplash.com/400x400/?oldskool,sneaker', stripe:'https://buy.stripe.com/abcde15'},
+            {sku:'p16', brand:'Reebok', name:'Reebok Club C', price:89, image:'https://source.unsplash.com/400x400/?reebok,sneaker', stripe:'https://buy.stripe.com/abcde16'},
+            {sku:'p17', brand:'Nike', name:'Nike Blazer Mid', price:109, image:'https://source.unsplash.com/400x400/?blazer,sneaker', stripe:'https://buy.stripe.com/abcde17'},
+            {sku:'p18', brand:'Adidas', name:'Adidas Samba', price:109, image:'https://source.unsplash.com/400x400/?samba,sneaker', stripe:'https://buy.stripe.com/abcde18'}
         ];
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('products-grid');
-            products.forEach(p => {
-                const card = `
-                    <div class="product-card">
-                        <img src="${p.img}" alt="${p.name}">
-                        <h3>${p.name}</h3>
-                        <p class="product-code">${p.code}</p>
-                        <p class="price">${p.price}</p>
-                        <p class="size">Tamanho ${p.size}</p>
-                        <a href="checkout.html?sku=${p.code}" class="buy-btn">Comprar</a>
-                    </div>
+
+        function renderProducts(brandFilter = 'all') {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            products.filter(p => brandFilter === 'all' || p.brand === brandFilter).forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${p.image}" alt="${p.name}" loading="lazy">
+                    <h3>${p.name}</h3>
+                    <p class="brand">${p.brand}</p>
+                    <p class="price">${p.price}€</p>
+                    <a href="checkout.html?sku=${p.sku}" class="btn">Comprar</a>
                 `;
-                grid.innerHTML += card;
+                grid.appendChild(card);
+            });
+        }
+
+        document.querySelectorAll('.filter-buttons button').forEach(btn => {
+            btn.addEventListener('click', e => {
+                document.querySelector('.filter-buttons .active').classList.remove('active');
+                e.target.classList.add('active');
+                renderProducts(e.target.dataset.brand);
             });
         });
+
+        renderProducts();
     </script>
 </body>
 </html>
