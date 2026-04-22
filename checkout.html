@@ -5,120 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Street Sole</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
         header {
-            background-color: #1e1e1e;
-            padding: 1rem 2rem;
+            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #333333 100%);
+            color: white;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 2px solid #CCFF00;
         }
-        header h1 {
-            color: #CCFF00;
-            text-shadow: 0 0 10px #CCFF00;
-            font-size: 2.5rem;
+        header h1 { font-size: 2.5em; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .checkout-product {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
         }
-        .checkout {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 2rem;
+        .checkout-product img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
         }
-        .form-group {
-            margin-bottom: 1.5rem;
+        .product-details h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .product-details .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        .product-details .size {
+            font-size: 1.2em;
+            color: #666;
+            font-weight: bold;
+        }
+        #no-product {
+            text-align: center;
+            color: #ff0000;
+            font-size: 1.2em;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #CCFF00;
-            text-shadow: 0 0 5px #CCFF00;
+            margin-bottom: 8px;
             font-weight: bold;
+            color: #333;
         }
         input {
             width: 100%;
-            padding: 1rem;
-            background-color: #1e1e1e;
-            border: 1px solid #333;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            color: #ffffff;
-            font-size: 1rem;
+            font-size: 1em;
         }
-        input:focus {
-            outline: none;
-            border-color: #CCFF00;
-            box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
-        }
-        .pay-btn {
+        input:focus { outline: none; border-color: #ff416c; }
+        .stripe-btn {
             width: 100%;
-            background-color: #CCFF00;
-            color: #000;
+            padding: 18px;
+            background: linear-gradient(90deg, #ff0000 0%, #cc0000 100%);
+            color: white;
             border: none;
-            padding: 1.5rem;
-            font-size: 1.5rem;
+            border-radius: 25px;
+            font-size: 1.2em;
             font-weight: bold;
-            border-radius: 12px;
             cursor: pointer;
-            text-shadow: none;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            margin-top: 1rem;
+            transition: opacity 0.3s;
         }
-        .pay-btn:hover {
-            box-shadow: 0 0 30px #CCFF00;
-            transform: scale(1.02);
-        }
-        @media (max-width: 768px) {
-            .checkout { padding: 1rem; margin: 1rem; }
-        }
+        .stripe-btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
     <header>
         <h1>Street Sole</h1>
     </header>
-    <section class="checkout">
-        <h2 style="text-align: center; color: #CCFF00; text-shadow: 0 0 10px #CCFF00; margin-bottom: 2rem;">Finalizar Compra</h2>
-        <form>
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" required>
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço</label>
-                <input type="text" id="endereco" required>
-            </div>
-            <div class="form-group">
-                <label for="cidade">Cidade</label>
-                <input type="text" id="cidade" required>
-            </div>
-            <div class="form-group">
-                <label for="cep">CEP</label>
-                <input type="text" id="cep" required>
-            </div>
-            <div class="form-group">
-                <label for="pais">País</label>
-                <input type="text" id="pais" required>
-            </div>
+    <div class="container">
+        <div id="product-display" class="checkout-product" style="display: none;"></div>
+        <div id="no-product" style="display: none;">Produto não encontrado.</div>
+        <form id="checkout-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" required>
+            <label for="pais">País:</label>
+            <input type="text" id="pais" name="pais" required>
+            <button type="button" class="stripe-btn" onclick="handleStripePay()">Pagar com Stripe</button>
         </form>
-        <a href="https://buy.stripe.com/fZu28t0PX2kYbgsf9neIw0i" class="pay-btn">Pagar com Stripe</a>
-    </section>
+    </div>
+    <script>
+        const imgBase = 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/';
+        const products = [
+            {code: 'DM5329-200', name: 'Nike AF1 Animal Print', price: '€120', size: '40', img: imgBase + 'nike-af1-animal-print4_a7h9gu'},
+            {code: 'DH3855-400', name: 'Nike AF1 Pixel Glacier', price: '€85', size: '40', img: imgBase + 'nike-af1-pixel-glacier'},
+            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40.5', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green1'},
+            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85', size: '40', img: imgBase + 'air-jordan-1-mid-se-grey-pine-green2'},
+            {code: '554725-371', name: 'Air Jordan 1 Mid Sonics', price: '€90', size: '40', img: imgBase + 'air-jordan-1-mid-sonics'},
+            {code: '554724-122', name: 'Air Jordan 1 Mid', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-554724'},
+            {code: 'BQ6472-079', name: 'Air Jordan 1 Mid Gym Red', price: '€90', size: '42', img: imgBase + 'air-jordan-1-mid-gym-red'},
+            {code: 'DC0500-100', name: 'Nike Jordan 1 Mid Dia de los Muertos', price: '€100', size: '40', img: imgBase + 'jordan-1-mid-dia-de-los-muertos'},
+            {code: 'CZ0775-104', name: 'Air Jordan 1 Retro Low OG UNC', price: '€80', size: '41', img: imgBase + 'air-jordan-1-retro-low-og-unc'},
+            {code: 'CZ0774-300', name: 'Air Jordan 1 Mid SE Dutch', price: '€120', size: '41', img: imgBase + 'air-jordan-1-mid-se-dutch'},
+            {code: 'DQ6078-100', name: 'Air Jordan 1 Mid SE Newsprint', price: '€85', size: '42', img: imgBase + 'air-jordan-1-mid-se-newsprint'},
+            {code: 'DO7413-991', name: 'Nike Dunk Low by Bernardo', price: '€90', size: '40', img: imgBase + 'nike-dunk-low-by-bernardo'},
+            {code: 'DD1503-118', name: 'Nike Dunk Low Rose Whisper', price: '€75', size: '39', img: imgBase + 'nike-dunk-low-rose-whisper'},
+            {code: 'DD1503-116', name: 'Nike Dunk Low White Venice', price: '€90', size: '39', img: imgBase + 'nike-dunk-low-white-venice'},
+            {code: 'DD1503-118', name: 'Air Jordan 1 Retro High OG Taxi', price: '€115', size: '42', img: imgBase + 'air-jordan-1-retro-high-og-taxi'},
+            {code: '555088-161', name: 'Air Jordan 1 Retro High OG Heritage', price: '€90', size: '40', img: imgBase + 'air-jordan-1-retro-high-og-heritage'},
+            {code: 'CD0461-001', name: 'Nike Air Max', price: '€100', size: '39', img: imgBase + 'nike-air-max-cd0461'},
+            {code: 'H03472', name: 'Adidas Campus 00s', price: '€60', size: '39', img: imgBase + 'adidas-campus-00s-h03472'}
+        ];
+        let currentSku;
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            currentSku = urlParams.get('sku');
+            const productMap = {};
+            products.forEach(p => {
+                productMap[p.code] = p;
+            });
+            const productDiv = document.getElementById('product-display');
+            const noProductDiv = document.getElementById('no-product');
+            if (currentSku && productMap[currentSku]) {
+                const p = productMap[currentSku];
+                productDiv.innerHTML = `
+                    <img src="${p.img}" alt="${p.name}">
+                    <div class="product-details">
+                        <h2>${p.name}</h2>
+                        <p class="price">${p.price}</p>
+                        <p class="size">Tamanho: ${p.size}</p>
+                    </div>
+                `;
+                productDiv.style.display = 'flex';
+                noProductDiv.style.display = 'none';
+            } else {
+                noProductDiv.style.display = 'block';
+                productDiv.style.display = 'none';
+            }
+        });
+        function handleStripePay() {
+            const form = document.getElementById('checkout-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            const formData = new FormData(form);
+            const email = formData.get('email');
+            const stripeUrl = `https://buy.stripe.com/test_bVZ7WP6oYaPwaYA000?prefilled_email=${encodeURIComponent(email || '')}&client_reference_id=${encodeURIComponent(currentSku || '')}`;
+            window.location.href = stripeUrl;
+        }
+    </script>
 </body>
 </html>
