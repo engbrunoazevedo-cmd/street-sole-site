@@ -149,17 +149,28 @@
             4. Links Stripe abrem em nova aba (target="_blank").
             5. Imagens: Use URLs públicas como Unsplash ou hospede suas próprias.
         -->
-        <section class="products-grid">
-            <div class="product">
-                <img src="https://imgur.com/a/GhPRTme" alt="Nike Air Force 1">
-                <div class="info">
-                    <h3>Nike Air Force 1/1 Animal Print</h3>
-                    <p class="brand">Nike</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 120,00</p>
-                    <a href="https://dashboard.stripe.com/acct_1TL9NHDpBOA8BvrF/test/products/prod_UNiRhnaPWrk9Im" target="_blank">Comprar</a>
-                </div>
-            </div>
+        <div class="product">
+  <!-- GALERIA DE FOTOS -->
+  <div class="product-gallery">
+    <img id="main-image" src="images/nike-af1-animal-print.jpg" alt="DM5329 200 Nike Air Force 1/1 Animal Print - Foto Principal">
+    <div class="thumbnail-gallery">
+      <img src="images/nike-af1-animal-print.jpg" onclick="changeImage(this)" alt="Foto 1" class="thumbnail">
+      <img src="images/nike-af1-animal-print1.jpg" onclick="changeImage(this)" alt="Foto 2" class="thumbnail">
+      <img src="images/nike-af1-animal-print2.jpg" onclick="changeImage(this)" alt="Foto 3" class="thumbnail">
+      <img src="images/nike-af1-animal-print3.jpg" onclick="changeImage(this)" alt="Foto 4" class="thumbnail">
+      <img src="images/nike-af1-animal-print4.jpg" onclick="changeImage(this)" alt="Foto 5" class="thumbnail">
+    </div>
+  </div>
+  <!-- FIM DA GALERIA -->
+  
+  <div class="info">
+    <h3>DM5329 200 Nike Air Force 1/1 Animal Print</h3>
+    <p class="brand">Nike</p>
+    <p class="size">Tamanho: 40</p>
+    <p class="price">€120</p>
+    <a href="SEU_STRIPE_PAYMENT_LINK" class="buy-btn" target="_blank">Comprar no Stripe</a>
+  </div>
+</div>
 
             <div class="product">
                 <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400&h=250&fit=crop" alt="Jordan 1 High">
