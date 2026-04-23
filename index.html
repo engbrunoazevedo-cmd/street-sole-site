@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street Sole - Sneakers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Street Sole</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,90 +17,153 @@
             color: #333;
         }
         header {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #333333 100%);
+            background: linear-gradient(to bottom, #000000, #1a1a1a);
             color: white;
-            padding: 2rem 0;
+            padding: 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            font-size: 2.5rem;
+            font-weight: 600;
         }
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        main {
-            padding: 4rem 2rem;
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
         .card {
             background: white;
-            border-radius: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        .card img {
-            width: 100%;
+        .carousel {
+            position: relative;
             height: 250px;
+            overflow: hidden;
+        }
+        .track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.4s ease;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+        .prev:hover, .next:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .dot.active {
+            background: white;
         }
         .card-content {
             padding: 1.5rem;
-            text-align: center;
         }
-        .card h3 {
-            font-size: 1.3rem;
+        .name {
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #222;
+            margin: 0 0 0.5rem;
+            color: #333;
         }
-        .brand {
-            font-size: 1rem;
+        .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ff416c;
+            margin: 0 0 0.5rem;
+        }
+        .size {
             color: #666;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            margin: 0 0 1rem;
+            font-size: 0.95rem;
         }
-        .product-code {
-            font-size: 0.9rem;
-            color: #999;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .buy-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 50%, #ff4b2b 100%);
+        .buy {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
             color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 50px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
             font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255,65,108,0.4);
+            transition: opacity 0.3s ease;
         }
-        .buy-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255,65,108,0.6);
+        .buy:hover {
+            opacity: 0.9;
         }
         @media (max-width: 768px) {
-            header h1 {
+            header {
                 font-size: 2rem;
+                padding: 1.5rem;
             }
-            main {
-                padding: 2rem 1rem;
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                padding: 1rem;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -108,227 +171,117 @@
 <body>
     <header>
         <h1>Street Sole</h1>
-        <p>Os melhores sneakers para completar seu estilo streetwear</p>
     </header>
-    <main>
-        <div class="grid">
-            <!-- Product 1 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu" alt="Nike Air Force 1">
-                <div class="card-content">
-                    <h3>Nike Air Force 1/1 Animal Print</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DM5329-200</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 120,00</p>
-                    <a href="checkout.html?sku=DM5329-200" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 2 - Corrected to Nike -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps" alt="Nike Air Force 1">
-                <div class="card-content">
-                    <h3>Nike Air Force 1 Pixel Glacier</h3>
-                    <p class="brand">Jordan</p>
-                    <p class="Code">DH3855-400</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 85,00</p>
-                    <a href="checkout.html?sku=DH3855-400" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Mid SE Grey Pine Green</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DC7294-103-40.5</p>
-                    <p class="size">Tamanho: 40.5</p>
-                    <p class="price">€ 85,00</p>
-                    <a href="checkout.html?sku=DC7294-103-40.5" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Mid SE Grey Pine Green</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DC7294-103</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 85,00</p>
-                    <a href="checkout.html?sku=DC7294-103" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 5 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870183/WhatsApp_Image_2026-04-18_at_18.58.23_he7mdc.jpg"alt="Air Jordan">
-                 <div class="card-content">
-                    <h3>Air Jordan 1 Mid Sonics</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">554725-371</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 90,00</p>
-                    <a href="checkout.html?sku=554725-371" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 6 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871063/WhatsApp_Image_2026-04-18_at_19.00.26_1_a2h5r9.jpg" alt="Air Jordan">
-                 <div class="card-content">
-                   <h3>Air Jordan 1 Mid</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">554724-122</p>
-                    <p class="size">Tamanho: 42</p>
-                    <p class="price">€ 90,00</p>
-                    <a href="checkout.html?sku=554724-122" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 7 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776870955/WhatsApp_Image_2026-04-18_at_19.08.52_1_vgwgms.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Mid Gym Red 42 Vermelho</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">BQ6472-079</p>
-                    <p class="size">Tamanho: 42</p>
-                    <p class="price">€ 90,00</p>
-                    <a href="checkout.html?sku=BQ6472-079" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 8 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871162/WhatsApp_Image_2026-04-17_at_12.58.42_2_h76djk.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Jordan 1 Mid Dia de los Muertos (GS)</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DC0500-100</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 100,00</p>
-                    <a href="checkout.html?sku=DC0500-100" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 9 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871211/WhatsApp_Image_2026-04-18_at_19.02.50_1_wh0urc.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Retro Low OG UNC</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">CZ0775-104</p>
-                    <p class="size">Tamanho: 41</p>
-                    <p class="price">€ 80,00</p>
-                    <a href="checkout.html?sku=CZ0775-104" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 10 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871247/WhatsApp_Image_2026-04-18_at_19.06.55_ltsaw8.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Mid SE Dutch</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">CZ0774-300</p>
-                    <p class="size">Tamanho: 41</p>
-                    <p class="price">€ 120,00</p>
-                    <a href="checkout.html?sku=CZ0774-300" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 11 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871286/WhatsApp_Image_2026-04-18_at_19.11.12_bmonzn.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Mid SE Newsprint</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DQ6078-100</p>
-                    <p class="size">Tamanho: 42</p>
-                    <p class="price">€ 85,00</p>
-                    <a href="checkout.html?sku=DQ6078-100" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 12 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871325/WhatsApp_Image_2026-04-18_at_19.05.09_1_ute63e.jpg" alt="Nike Dunk">
-                <div class="card-content">
-                    <h3>Nike Dunk Low by Bernardo</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DO7413-991</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 90,00</p>
-                    <a href="checkout.html?sku=DO7413-991" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 13 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871362/WhatsApp_Image_2026-04-18_at_19.13.02_1_ayfvom.jpg" alt="Nike Dunk">
-                <div class="card-content">
-                    <h3>Nike Dunk Low Rose Whisper</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DD1503-118</p>
-                    <p class="size">Tamanho: 39</p>
-                    <p class="price">€ 75,00</p>
-                    <a href="checkout.html?sku=DD1503-118" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 14 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871399/WhatsApp_Image_2026-04-18_at_19.15.00_1_oveznf.jpg" alt="Nike Dunk">
-                <div class="card-content">
-                    <h3>Nike Dunk Low White Venice</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">DD1503-116</p>
-                    <p class="size">Tamanho: 39</p>
-                    <p class="price">€ 90,00</p>
-                    <a href="checkout.html?sku=DD1503-116" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 15 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871438/WhatsApp_Image_2026-04-18_at_19.16.42_occ7ko.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Retro High OG Taxi Biqueira Amarela</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">555088-711</p>
-                    <p class="size">Tamanho: 42</p>
-                    <p class="price">€ 115,00</p>
-                    <a href="checkout.html?sku=555088-711" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 16 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871475/WhatsApp_Image_2026-04-18_at_19.18.32_o6ftyj.jpg" alt="Air Jordan">
-                <div class="card-content">
-                    <h3>Air Jordan 1 Retro High OG Heritage</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">555088-161</p>
-                    <p class="size">Tamanho: 40</p>
-                    <p class="price">€ 90,00</p>
-                    <a href="checkout.html?sku=555088-161" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 17 -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871531/WhatsApp_Image_2026-04-22_at_10.42.59_o1yem1.jpg" alt="Air Max">
-                <div class="card-content">
-                    <h3>Nike Air Max</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">CD0461-001</p>
-                    <p class="size">Tamanho: 39</p>
-                    <p class="price">€ 100,00</p>
-                    <a href="checkout.html?sku=CD0461-001" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-            <!-- Product 18 - Corrected to Adidas -->
-            <div class="card">
-                <img src="https://res.cloudinary.com/duq0tf4da/image/upload/v1776871575/WhatsApp_Image_2026-04-18_at_19.19.56_e4hdnp.jpg" alt="Adidas">
-                <div class="card-content">
-                    <h3>Adidas Campus 00s</h3>
-                    <p class="brand">Nike</p>
-                    <p class="Code">H03472</p>
-                    <p class="size">Tamanho: 39</p>
-                    <p class="price">€ 60,00</p>
-                    <a href="checkout.html?sku=H03472" class="buy-btn">Comprar</a>
-                </div>
-            </div>
-        </div>
+    <main class="products" id="products-grid">
+        <!-- Products will be generated here -->
     </main>
+    <script>
+        const products = [
+            {code: 'DM5329-200', name: 'Nike Air Force 1/1 Animal Print', price: '€120,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu'},
+            {code: 'DH3855-400', name: 'Nike Air Force 1 Pixel Glacier', price: '€85,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps'},
+            {code: 'DC7294-103-40.5', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85,00', size: '40.5', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg'},
+            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg'},
+            {code: '554725-371', name: 'Air Jordan 1 Mid Sonics', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870183/WhatsApp_Image_2026-04-18_at_18.58.23_he7mdc.jpg'},
+            {code: '554724-122', name: 'Air Jordan 1 Mid', price: '€90,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871063/WhatsApp_Image_2026-04-18_at_19.00.26_1_a2h5r9.jpg'},
+            {code: 'BQ6472-079', name: 'Air Jordan 1 Mid Gym Red Vermelho', price: '€90,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870955/WhatsApp_Image_2026-04-18_at_19.08.52_1_vgwgms.jpg'},
+            {code: 'DC0500-100', name: 'Jordan 1 Mid Dia de los Muertos (GS)', price: '€100,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871162/WhatsApp_Image_2026-04-17_at_12.58.42_2_h76djk.jpg'},
+            {code: 'CZ0775-104', name: 'Air Jordan 1 Retro Low OG UNC', price: '€80,00', size: '41', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871211/WhatsApp_Image_2026-04-18_at_19.02.50_1_wh0urc.jpg'},
+            {code: 'CZ0774-300', name: 'Air Jordan 1 Mid SE Dutch', price: '€120,00', size: '41', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871247/WhatsApp_Image_2026-04-18_at_19.06.55_ltsaw8.jpg'},
+            {code: 'DQ6078-100', name: 'Air Jordan 1 Mid SE Newsprint', price: '€85,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871286/WhatsApp_Image_2026-04-18_at_19.11.12_bmonzn.jpg'},
+            {code: 'DO7413-991', name: 'Nike Dunk Low by Bernardo', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871325/WhatsApp_Image_2026-04-18_at_19.05.09_1_ute63e.jpg'},
+            {code: 'DD1503-118', name: 'Nike Dunk Low Rose Whisper', price: '€75,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871362/WhatsApp_Image_2026-04-18_at_19.13.02_1_ayfvom.jpg'},
+            {code: 'DD1503-116', name: 'Nike Dunk Low White Venice', price: '€90,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871399/WhatsApp_Image_2026-04-18_at_19.15.00_1_oveznf.jpg'},
+            {code: '555088-711', name: 'Air Jordan 1 Retro High OG Taxi Biqueira Amarela', price: '€115,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871438/WhatsApp_Image_2026-04-18_at_19.16.42_occ7ko.jpg'},
+            {code: '555088-161', name: 'Air Jordan 1 Retro High OG Heritage', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871475/WhatsApp_Image_2026-04-18_at_19.18.32_o6ftyj.jpg'},
+            {code: 'CD0461-001', name: 'Nike Air Max', price: '€100,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871531/WhatsApp_Image_2026-04-22_at_10.42.59_o1yem1.jpg'},
+            {code: 'H03472', name: 'Adidas Campus 00s', price: '€60,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871575/WhatsApp_Image_2026-04-18_at_19.19.56_e4hdnp.jpg'}
+        ];
+
+        function generateProducts() {
+            const grid = document.getElementById('products-grid');
+            products.forEach((prod, idx) => {
+                const id = idx + 1;
+                const html = `
+                    <div class="card">
+                        <div class="carousel" id="carousel-${id}">
+                            <div class="track" id="track-${id}">
+                                <div class="slide">
+                                    <img src="${prod.url}" alt="${prod.name}">
+                                    <div class="overlay">1/3</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="${prod.url}" alt="${prod.name}">
+                                    <div class="overlay">2/3</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="${prod.url}" alt="${prod.name}">
+                                    <div class="overlay">3/3</div>
+                                </div>
+                            </div>
+                            <button class="prev">&lsaquo;</button>
+                            <button class="next">&rsaquo;</button>
+                            <div class="dots">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="name">${prod.code} - ${prod.name}</h3>
+                            <p class="price">${prod.price}</p>
+                            <p class="size">Size ${prod.size}</p>
+                            <button class="buy">Buy Now</button>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', html);
+            });
+
+            // Initialize carousels after generation
+            for (let i = 1; i <= products.length; i++) {
+                initCarousel(i);
+            }
+        }
+
+        function initCarousel(id) {
+            const carousel = document.getElementById(`carousel-${id}`);
+            const track = document.getElementById(`track-${id}`);
+            const slides = track.querySelectorAll('.slide');
+            const prev = carousel.querySelector('.prev');
+            const next = carousel.querySelector('.next');
+            const dotsCont = carousel.querySelector('.dots');
+            const dots = dotsCont.querySelectorAll('.dot');
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            function goToSlide(index) {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            prev.addEventListener('click', () => {
+                currentIndex = currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
+                goToSlide(currentIndex);
+            });
+
+            next.addEventListener('click', () => {
+                currentIndex = currentIndex === totalSlides - 1 ? 0 : currentIndex + 1;
+                goToSlide(currentIndex);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    goToSlide(currentIndex);
+                });
+            });
+
+            goToSlide(0);
+        }
+
+        document.addEventListener('DOMContentLoaded', generateProducts);
+    </script>
 </body>
 </html>
