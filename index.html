@@ -1,448 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Street Sole - Sneakers Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #000000 0%, #333333 100%);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      border-radius: 12px;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    }
-    .carousel {
-      position: relative;
-      height: 250px;
-    }
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-    .slide.active {
-      display: block;
-    }
-    .prev,
-    .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      font-size: 1.5rem;
-      padding: 0;
-      cursor: pointer;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-      z-index: 10;
-    }
-    .prev:hover,
-    .next:hover {
-      background: rgba(0,0,0,0.8);
-    }
-    .prev {
-      left: 10px;
-    }
-    .next {
-      right: 10px;
-    }
-    .dots {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.5rem;
-      z-index: 10;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .dot.active,
-    .dot:hover {
-      background: white;
-    }
-    .card-content {
-      padding: 1.5rem;
-    }
-    .card-content h3 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    .code {
-      color: #666;
-      font-size: 0.9rem;
-      margin: 0 0 0.5rem 0;
-    }
-    .price {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 0 0 0.5rem 0;
-    }
-    .size {
-      color: #888;
-      margin: 0 0 1rem 0;
-    }
-    .buy-now {
-      display: block;
-      background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
-      color: white;
-      text-decoration: none;
-      padding: 1rem;
-      text-align: center;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: transform 0.3s;
-    }
-    .buy-now:hover {
-      transform: scale(1.02);
-    }
-    @media (max-width: 768px) {
-      body {
-        padding: 1rem;
-      }
-      header {
-        font-size: 2rem;
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Sole - Sneakers Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            line-height: 1.6;
+        }
+        header {
+            background: #222;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        #products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .product-card h3 {
+            padding: 1.2rem;
+            font-size: 1.3em;
+            color: #333;
+            text-align: center;
+        }
+        .image-carousel {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+        }
+        .slides {
+            position: relative;
+            height: 100%;
+        }
+        .slides img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            font-size: 1.6em;
+            cursor: pointer;
+            z-index: 20;
+            border-radius: 4px;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        .prev:hover,
+        .next:hover {
+            background: rgba(0,0,0,0.9);
+        }
+        .prev {
+            left: 12px;
+        }
+        .next {
+            right: 12px;
+        }
+        .dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .dot {
+            height: 14px;
+            width: 14px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .dot.active {
+            background: #007cba;
+            transform: scale(1.1);
+        }
+        .price {
+            padding: 0 1.2rem 1.5rem;
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #007cba;
+            text-align: center;
+        }
+        .buy-now {
+            display: block;
+            background: linear-gradient(135deg, #007cba, #005a87);
+            color: white;
+            text-align: center;
+            padding: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            border-radius: 0 0 12px 12px;
+        }
+        .buy-now:hover {
+            background: linear-gradient(135deg, #005a87, #003d5b);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            #products-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Street Sole</h1>
-  </header>
-  <div class="products"></div>
+    <header>
+        <h1>Street Sole Sneakers Store</h1>
+    </header>
+    <div id="products-container"></div>
+    <script>
+        const products = [
+            {
+                sku: "DM5329-200",
+                name: "Nike Air Force 1 '07 White",
+                price: "$110",
+                images: [
+                    "https://via.placeholder.com/400x300/f5f5f7/333?text=DM5329-200+Front",
+                    "https://via.placeholder.com/400x300/f5f5f7/333?text=DM5329-200+Side",
+                    "https://via.placeholder.com/400x300/f5f5f7/333?text=DM5329-200+Back"
+                ]
+            },
+            {
+                sku: "DH3855-400",
+                name: "Nike Dunk Low Grey Fog",
+                price: "$115",
+                images: [
+                    "https://via.placeholder.com/400x300/d3d7d8/333?text=DH3855-400+Front",
+                    "https://via.placeholder.com/400x300/d3d7d8/333?text=DH3855-400+Side",
+                    "https://via.placeholder.com/400x300/d3d7d8/333?text=DH3855-400+Back"
+                ]
+            },
+            {
+                sku: "DV0786-001",
+                name: "Nike Air Force 1 Low Black",
+                price: "$110",
+                images: [
+                    "https://via.placeholder.com/400x300/1a1a1a/fff?text=DV0786-001+Front",
+                    "https://via.placeholder.com/400x300/1a1a1a/fff?text=DV0786-001+Side",
+                    "https://via.placeholder.com/400x300/1a1a1a/fff?text=DV0786-001+Back"
+                ]
+            },
+            {
+                sku: "FZ5288-001",
+                name: "Nike Air Force 1 Shadow Black White",
+                price: "$120",
+                images: [
+                    "https://via.placeholder.com/400x300/2c2c2c/fff?text=FZ5288-001+Front",
+                    "https://via.placeholder.com/400x300/2c2c2c/fff?text=FZ5288-001+Side",
+                    "https://via.placeholder.com/400x300/2c2c2c/fff?text=FZ5288-001+Back"
+                ]
+            },
+            {
+                sku: "DC3655-100",
+                name: "Nike Air Force 1 Low Summit White",
+                price: "$115",
+                images: [
+                    "https://via.placeholder.com/400x300/ffffff/333?text=DC3655-100+Front",
+                    "https://via.placeholder.com/400x300/ffffff/333?text=DC3655-100+Side",
+                    "https://via.placeholder.com/400x300/ffffff/333?text=DC3655-100+Back"
+                ]
+            },
+            {
+                sku: "DJ6160-100",
+                name: "Nike Dunk Low White Gum",
+                price: "$115",
+                images: [
+                    "https://via.placeholder.com/400x300/faf5e8/333?text=DJ6160-100+Front",
+                    "https://via.placeholder.com/400x300/faf5e8/333?text=DJ6160-100+Side",
+                    "https://via.placeholder.com/400x300/faf5e8/333?text=DJ6160-100+Back"
+                ]
+            },
+            {
+                sku: "DQ8580-100",
+                name: "Nike Blazer Mid '77 Vintage White",
+                price: "$100",
+                images: [
+                    "https://via.placeholder.com/400x300/eeeeee/333?text=DQ8580-100+Front",
+                    "https://via.placeholder.com/400x300/eeeeee/333?text=DQ8580-100+Side",
+                    "https://via.placeholder.com/400x300/eeeeee/333?text=DQ8580-100+Back"
+                ]
+            },
+            {
+                sku: "FB2010-100",
+                name: "Nike Air Max 90 White",
+                price: "$130",
+                images: [
+                    "https://via.placeholder.com/400x300/f0f8ff/333?text=FB2010-100+Front",
+                    "https://via.placeholder.com/400x300/f0f8ff/333?text=FB2010-100+Side",
+                    "https://via.placeholder.com/400x300/f0f8ff/333?text=FB2010-100+Back"
+                ]
+            },
+            {
+                sku: "DA6417-100",
+                name: "Nike React Element 87 White",
+                price: "$140",
+                images: [
+                    "https://via.placeholder.com/400x300/fff8dc/333?text=DA6417-100+Front",
+                    "https://via.placeholder.com/400x300/fff8dc/333?text=DA6417-100+Side",
+                    "https://via.placeholder.com/400x300/fff8dc/333?text=DA6417-100+Back"
+                ]
+            },
+            {
+                sku: "DC9472-100",
+                name: "Nike Air Max SC",
+                price: "$130",
+                images: [
+                    "https://via.placeholder.com/400x300/e0ffff/333?text=DC9472-100+Front",
+                    "https://via.placeholder.com/400x300/e0ffff/333?text=DC9472-100+Side",
+                    "https://via.placeholder.com/400x300/e0ffff/333?text=DC9472-100+Back"
+                ]
+            },
+            {
+                sku: "FN3208-100",
+                name: "Nike Air Zoom Tempo Next%",
+                price: "$200",
+                images: [
+                    "https://via.placeholder.com/400x300/90ee90/333?text=FN3208-100+Front",
+                    "https://via.placeholder.com/400x300/90ee90/333?text=FN3208-100+Side",
+                    "https://via.placeholder.com/400x300/90ee90/333?text=FN3208-100+Back"
+                ]
+            },
+            {
+                sku: "CW7394-100",
+                name: "Nike Metcon 8 White",
+                price: "$150",
+                images: [
+                    "https://via.placeholder.com/400x300/fffacd/333?text=CW7394-100+Front",
+                    "https://via.placeholder.com/400x300/fffacd/333?text=CW7394-100+Side",
+                    "https://via.placeholder.com/400x300/fffacd/333?text=CW7394-100+Back"
+                ]
+            },
+            {
+                sku: "DA5409-100",
+                name: "Nike Challenger OG",
+                price: "$90",
+                images: [
+                    "https://via.placeholder.com/400x300/ffe4e1/333?text=DA5409-100+Front",
+                    "https://via.placeholder.com/400x300/ffe4e1/333?text=DA5409-100+Side",
+                    "https://via.placeholder.com/400x300/ffe4e1/333?text=DA5409-100+Back"
+                ]
+            },
+            {
+                sku: "DN3682-100",
+                name: "Nike Air Force 1 Low LV8 White",
+                price: "$120",
+                images: [
+                    "https://via.placeholder.com/400x300/faf0e6/333?text=DN3682-100+Front",
+                    "https://via.placeholder.com/400x300/faf0e6/333?text=DN3682-100+Side",
+                    "https://via.placeholder.com/400x300/faf0e6/333?text=DN3682-100+Back"
+                ]
+            },
+            {
+                sku: "HQ6964-100",
+                name: "Nike GT Cut Academy",
+                price: "$140",
+                images: [
+                    "https://via.placeholder.com/400x300/dcdcdc/333?text=HQ6964-100+Front",
+                    "https://via.placeholder.com/400x300/dcdcdc/333?text=HQ6964-100+Side",
+                    "https://via.placeholder.com/400x300/dcdcdc/333?text=HQ6964-100+Back"
+                ]
+            },
+            {
+                sku: "IB7661-400",
+                name: "Nike Dunk Low PRM Sand Drift",
+                price: "$125",
+                images: [
+                    "https://via.placeholder.com/400x300/f4a460/333?text=IB7661-400+Front",
+                    "https://via.placeholder.com/400x300/f4a460/333?text=IB7661-400+Side",
+                    "https://via.placeholder.com/400x300/f4a460/333?text=IB7661-400+Back"
+                ]
+            },
+            {
+                sku: "IF8789-100",
+                name: "Nike Air Max Plus White",
+                price: "$160",
+                images: [
+                    "https://via.placeholder.com/400x300/ffffff/333?text=IF8789-100+Front",
+                    "https://via.placeholder.com/400x300/ffffff/333?text=IF8789-100+Side",
+                    "https://via.placeholder.com/400x300/ffffff/333?text=IF8789-100+Back"
+                ]
+            }
+        ];
 
-  <script>
-    const image1 = 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu';
-    const image2 = 'https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps';
+        let slideIndexes = {};
 
-    const products = [
-      {
-    sku: 'DM5329-200',
-    name: 'Nike Air Force 1/1 Animal Print',
-    price: '€120,00',
-    size: 'Size 40',
-    images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776943425/nike-af1-animal-print4_cswwvq.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776943424/nike-af1-animal-print_i8xg6x.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776943425/nike-af1-animal-print5_bzqjws.jpg'
-    ]
-      },
-      {
-        sku: 'DH3855-400',
-        name: 'Nike Air Force 1 Pixel Glacier',
-        price: '€85,00',
-        size: 'Size 40',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776946918/WhatsApp_Image_2026-04-17_at_12.55.50_rf3tsi.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776946917/WhatsApp_Image_2026-04-17_at_12.55.50_1_kcacwd.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776943425/nike-af1-animal-print5_bzqjws.jpg'
-    ]
-      },
-      {
-        sku: 'DC7294-103-40.5',
-        name: 'Air Jordan 1 Mid SE Grey Pine Green',
-        price: '€85,00',
-        size: 'Size 40.5',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947149/WhatsApp_Image_2026-04-18_at_18.51.06_v229hg.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947149/WhatsApp_Image_2026-04-18_at_18.54.01_1_wzffga.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947150/WhatsApp_Image_2026-04-18_at_18.54.02_2_tupu3f.jpg'
-    ]
-      },
-      {
-        sku: 'DC7294-103',
-        name: 'Air Jordan 1 Mid SE Grey Pine Green',
-        price: '€85,00',
-        size: 'Size 40',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947149/WhatsApp_Image_2026-04-18_at_18.51.06_v229hg.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947149/WhatsApp_Image_2026-04-18_at_18.54.01_1_wzffga.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947161/WhatsApp_Image_2026-04-18_at_18.56.02_3_uib1fi.jpg'
-    ]
-      },
-      {
-        sku: '554725-371',
-        name: 'Air Jordan 1 Mid Sonics',
-        price: '€90,00',
-        size: 'Size 40',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947179/WhatsApp_Image_2026-04-18_at_18.58.23_a7mngf.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947178/WhatsApp_Image_2026-04-18_at_18.58.23_1_xjkuex.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947181/WhatsApp_Image_2026-04-18_at_18.58.24_of23yo.jpg'
-    ]
-      },
-      {
-        sku: '554724-122',
-        name: 'Air Jordan 1 Mid',
-        price: '€90,00',
-        size: 'Size 42',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947131/WhatsApp_Image_2026-04-18_at_19.00.26_1_bfjcls.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947131/WhatsApp_Image_2026-04-18_at_19.00.26_dky3ts.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947132/WhatsApp_Image_2026-04-18_at_19.00.27_1_uxfarr.jpg'
-    ]
-      },
-      {
-        sku: 'BQ6472-079',
-        name: 'Air Jordan 1 Mid Gym Red Vermelho',
-        price: '€90,00',
-        size: 'Size 42',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947124/WhatsApp_Image_2026-04-18_at_19.08.52_1_ool8it.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947124/WhatsApp_Image_2026-04-18_at_19.08.52_gjfi3b.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947124/WhatsApp_Image_2026-04-18_at_19.08.53_1_lqh1qs.jpg'
-    ]
-      },
-      {
-        sku: 'DC0500-100',
-        name: 'Jordan 1 Mid Dia de los Muertos (GS)',
-        price: '€100,00',
-        size: 'Size 40',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776946917/WhatsApp_Image_2026-04-17_at_12.58.42_2_rxknvz.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776946917/WhatsApp_Image_2026-04-17_at_12.58.42_byyk5m.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776946917/WhatsApp_Image_2026-04-17_at_12.58.42_3_xpp4kh.jpg'
-    ]
-      },
-      {
-        sku: 'CZ0775-104',
-        name: 'Air Jordan 1 Retro Low OG UNC',
-        price: '€80,00',
-        size: 'Size 41',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947208/WhatsApp_Image_2026-04-18_at_19.02.50_1_ua710n.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947210/WhatsApp_Image_2026-04-18_at_19.02.50_xscscv.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947210/WhatsApp_Image_2026-04-18_at_19.02.51_j3mqed.jpg'
-    ]
-      },
-      {
-        sku: 'CZ0774-300',
-        name: 'Air Jordan 1 Mid SE Dutch',
-        price: '€120,00',
-        size: 'Size 41',
-       images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947140/WhatsApp_Image_2026-04-18_at_19.06.55_rpqoee.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947141/WhatsApp_Image_2026-04-18_at_19.06.56_saagol.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947140/WhatsApp_Image_2026-04-18_at_19.06.56_2_eol0nu.jpg'
-    ]
-      },
-      {
-        sku: 'DQ6078-100',
-        name: 'Air Jordan 1 Mid SE Newsprint',
-        price: '€85,00',
-        size: 'Size 42',
-       images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947170/WhatsApp_Image_2026-04-18_at_19.11.12_llif4w.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947171/WhatsApp_Image_2026-04-18_at_19.11.13_akrvbt.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947171/WhatsApp_Image_2026-04-18_at_19.11.13_2_rpfhab.jpg'
-    ]
-      },
-      {
-        sku: 'DO7413-991',
-        name: 'Nike Dunk Low by Bernardo',
-        price: '€90,00',
-        size: 'Size 40',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947221/WhatsApp_Image_2026-04-18_at_19.05.09_1_qukqyh.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947223/WhatsApp_Image_2026-04-18_at_19.05.09_kjguub.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947222/WhatsApp_Image_2026-04-18_at_19.05.09_2_c0mvid.jpg'
-    ]
-      },
-      {
-        sku: 'DD1503-118',
-        name: 'Nike Dunk Low Rose Whisper',
-        price: '€75,00',
-        size: 'Size 39',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947231/WhatsApp_Image_2026-04-18_at_19.13.02_1_x1rkqo.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947233/WhatsApp_Image_2026-04-18_at_19.13.02_kpidze.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947232/WhatsApp_Image_2026-04-18_at_19.13.02_2_cyu1k5.jpg'
-    ]
-      },
-      {
-        sku: 'DD1503-116',
-        name: 'Nike Dunk Low White Venice',
-        price: '€90,00',
-        size: 'Size 39',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947239/WhatsApp_Image_2026-04-18_at_19.15.00_1_sqbytr.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947241/WhatsApp_Image_2026-04-18_at_19.15.00_2_f9czgx.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947241/WhatsApp_Image_2026-04-18_at_19.15.00_2_f9czgx.jpg'
-    ]
-      },
-      {
-        sku: '555088-711',
-        name: 'Air Jordan 1 Retro High OG Taxi Biqueira Amarela',
-        price: '€115,00',
-        size: 'Size 42',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947198/WhatsApp_Image_2026-04-18_at_19.16.43_ivjycj.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947196/WhatsApp_Image_2026-04-18_at_19.16.42_ugjush.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947198/WhatsApp_Image_2026-04-18_at_19.16.44_fwvra7.jpg'
-    ]
-      },
-      {
-        sku: '555088-161',
-        name: 'Air Jordan 1 Retro High OG Heritage',
-        price: '€90,00',
-        size: 'Size 40',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947188/WhatsApp_Image_2026-04-18_at_19.18.32_f50oi6.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947187/WhatsApp_Image_2026-04-18_at_19.18.31_zo5cmw.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947188/WhatsApp_Image_2026-04-18_at_19.18.32_1_lcwamo.jpg'
-    ]
-      },
-      {
-        sku: 'CD0461-001',
-        name: 'Nike Air Max',
-        price: '€100,00',
-        size: 'Size 39',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776951380/WhatsApp_Image_2026-04-22_at_10.42.59_ddbdym.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776951383/WhatsApp_Image_2026-04-22_at_10.43.00_3_esi93t.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776951380/WhatsApp_Image_2026-04-22_at_10.43.00_1_vovguy.jpg'
-    ]
-      },
-      {
-        sku: 'H03472',
-        name: 'Adidas Campus 00s',
-        price: '€60,00',
-        size: 'Size 39',
-        images: [
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947250/WhatsApp_Image_2026-04-18_at_19.19.56_mjmnyw.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947250/WhatsApp_Image_2026-04-18_at_19.19.56_mjmnyw.jpg',
-        'https://res.cloudinary.com/duq0tf4da/image/upload/v1776947249/WhatsApp_Image_2026-04-18_at_19.19.56_1_ujxyax.jpg'
-    ]
-      }
-    ];
+        function showSlides(n, slideIndex) {
+            const carousel = document.querySelector(`[data-carousel=\"${n}\"]`);
+            if (!carousel) return;
+            const slides = carousel.querySelectorAll('.slides img');
+            const dots = carousel.querySelectorAll('.dot');
+            slides.forEach((slide, i) => {
+                slide.style.display = i === slideIndex ? 'block' : 'none';
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === slideIndex);
+            });
+            slideIndexes[n] = slideIndex;
+        }
 
-    function generateCards() {
-      const grid = document.querySelector('.products');
-      products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <div class="carousel">
-            <div class="carousel-container">
-              ${product.images.map((src, i) => `
-                <img src="${src}" alt="${product.name} - View ${i + 1}" class="slide ${i === 0 ? 'active' : ''}">
-              `).join('')}
-            </div>
-            <button class="prev">&#8249;</button>
-            <button class="next">&#8250;</button>
-            <div class="dots">
-              ${product.images.map((_, i) => `
-                <span class="dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></span>
-              `).join('')}
-            </div>
-          </div>
-          <div class="card-content">
-            <h3>${product.name}</h3>
-            <p class="code">${product.sku}</p>
-            <p class="price">${product.price}</p>
-            <p class="size">${product.size}</p>
-            <a href="#" class="buy-now">Buy Now</a>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
+        function changeSlide(n, direction) {
+            let slideIndex = slideIndexes[n] || 0;
+            const numSlides = products[n].images.length;
+            slideIndex = (slideIndex + direction + numSlides) % numSlides;
+            showSlides(n, slideIndex);
+        }
 
-    function showSlide(carousel, index) {
-      const slides = carousel.querySelectorAll('.slide');
-      const dots = carousel.querySelectorAll('.dot');
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-    }
+        function currentSlide(n, slideIndex) {
+            showSlides(n, slideIndex);
+        }
 
-    function nextSlide(carousel) {
-      const activeSlide = carousel.querySelector('.slide.active');
-      const slides = carousel.querySelectorAll('.slide');
-      let nextIdx = Array.from(slides).indexOf(activeSlide) + 1;
-      if (nextIdx >= slides.length) nextIdx = 0;
-      showSlide(carousel, nextIdx);
-    }
+        function generateProducts() {
+            const container = document.getElementById('products-container');
+            products.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <h3>${product.name.replace(/'/g, "&apos;")}</h3>
+                    <div class="image-carousel" data-carousel="${index}">
+                        <div class="slides">
+                            ${product.images.map((imgSrc, i) => `<img src="${imgSrc}" alt="${product.name} ${i+1}">`).join('')}
+                        </div>
+                        <button class="prev" type="button" onclick="changeSlide(${index}, -1)">❮</button>
+                        <button class="next" type="button" onclick="changeSlide(${index}, 1)">❯</button>
+                        <div class="dots">
+                            ${product.images.map((_, i) => `<span class="dot" onclick="currentSlide(${index}, ${i})"></span>`).join('')}
+                        </div>
+                    </div>
+                    <p class="price">${product.price}</p>
+                    <a href="checkout.html?sku=${product.sku}" class="buy-now">Buy Now</a>
+                `;
+                container.appendChild(card);
+            });
+            products.forEach((_, index) => showSlides(index, 0));
+        }
 
-    function prevSlide(carousel) {
-      const activeSlide = carousel.querySelector('.slide.active');
-      const slides = carousel.querySelectorAll('.slide');
-      let prevIdx = Array.from(slides).indexOf(activeSlide) - 1;
-      if (prevIdx < 0) prevIdx = slides.length - 1;
-      showSlide(carousel, prevIdx);
-    }
-
-    document.addEventListener('DOMContentLoaded', generateCards);
-
-    document.addEventListener('click', (e) => {
-      const carousel = e.target.closest('.carousel');
-      if (!carousel) return;
-      if (e.target.matches('.next')) {
-        nextSlide(carousel);
-      } else if (e.target.matches('.prev')) {
-        prevSlide(carousel);
-      } else if (e.target.matches('.dot')) {
-        const index = parseInt(e.target.dataset.slide);
-        showSlide(carousel, index);
-      }
-    });
-  </script>
+        document.addEventListener('DOMContentLoaded', generateProducts);
+    </script>
 </body>
 </html>
