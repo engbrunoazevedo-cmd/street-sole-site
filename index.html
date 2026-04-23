@@ -171,30 +171,31 @@
 <body>
     <header>
         <h1>Street Sole</h1>
+        <p>Os melhores sneakers para completar seu estilo streetwear</p>
     </header>
     <main class="products" id="products-grid">
         <!-- Products will be generated here -->
     </main>
     <script>
         const products = [
-            {code: 'DM5329-200', name: 'Nike Air Force 1/1 Animal Print', price: '€120,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu'},
-            {code: 'DH3855-400', name: 'Nike Air Force 1 Pixel Glacier', price: '€85,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps'},
-            {code: 'DC7294-103-40.5', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85,00', size: '40.5', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg'},
-            {code: 'DC7294-103', name: 'Air Jordan 1 Mid SE Grey Pine Green', price: '€85,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg'},
-            {code: '554725-371', name: 'Air Jordan 1 Mid Sonics', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870183/WhatsApp_Image_2026-04-18_at_18.58.23_he7mdc.jpg'},
-            {code: '554724-122', name: 'Air Jordan 1 Mid', price: '€90,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871063/WhatsApp_Image_2026-04-18_at_19.00.26_1_a2h5r9.jpg'},
-            {code: 'BQ6472-079', name: 'Air Jordan 1 Mid Gym Red Vermelho', price: '€90,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870955/WhatsApp_Image_2026-04-18_at_19.08.52_1_vgwgms.jpg'},
-            {code: 'DC0500-100', name: 'Jordan 1 Mid Dia de los Muertos (GS)', price: '€100,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871162/WhatsApp_Image_2026-04-17_at_12.58.42_2_h76djk.jpg'},
-            {code: 'CZ0775-104', name: 'Air Jordan 1 Retro Low OG UNC', price: '€80,00', size: '41', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871211/WhatsApp_Image_2026-04-18_at_19.02.50_1_wh0urc.jpg'},
-            {code: 'CZ0774-300', name: 'Air Jordan 1 Mid SE Dutch', price: '€120,00', size: '41', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871247/WhatsApp_Image_2026-04-18_at_19.06.55_ltsaw8.jpg'},
-            {code: 'DQ6078-100', name: 'Air Jordan 1 Mid SE Newsprint', price: '€85,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871286/WhatsApp_Image_2026-04-18_at_19.11.12_bmonzn.jpg'},
-            {code: 'DO7413-991', name: 'Nike Dunk Low by Bernardo', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871325/WhatsApp_Image_2026-04-18_at_19.05.09_1_ute63e.jpg'},
-            {code: 'DD1503-118', name: 'Nike Dunk Low Rose Whisper', price: '€75,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871362/WhatsApp_Image_2026-04-18_at_19.13.02_1_ayfvom.jpg'},
-            {code: 'DD1503-116', name: 'Nike Dunk Low White Venice', price: '€90,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871399/WhatsApp_Image_2026-04-18_at_19.15.00_1_oveznf.jpg'},
-            {code: '555088-711', name: 'Air Jordan 1 Retro High OG Taxi Biqueira Amarela', price: '€115,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871438/WhatsApp_Image_2026-04-18_at_19.16.42_occ7ko.jpg'},
-            {code: '555088-161', name: 'Air Jordan 1 Retro High OG Heritage', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871475/WhatsApp_Image_2026-04-18_at_19.18.32_o6ftyj.jpg'},
-            {code: 'CD0461-001', name: 'Nike Air Max', price: '€100,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871531/WhatsApp_Image_2026-04-22_at_10.42.59_o1yem1.jpg'},
-            {code: 'H03472', name: 'Adidas Campus 00s', price: '€60,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871575/WhatsApp_Image_2026-04-18_at_19.19.56_e4hdnp.jpg'}
+            {name: 'Nike Air Force 1/1 Animal Print', sku: 'DM5329-200', price: '€120,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/f_auto,q_auto/nike-af1-animal-print4_a7h9gu'},
+            {name: 'Nike Air Force 1 Pixel Glacier', sku: 'DH3855-400', price: '€85,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/fl_preserve_transparency/v1776868727/WhatsApp_Image_2026-04-17_at_12.55.50_oitykr.jpg?_s=public-apps'},
+            {name: 'Air Jordan 1 Mid SE Grey Pine Green', sku: 'DC7294-103-40.5', price: '€85,00', size: '40.5', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg'},
+            {name: 'Air Jordan 1 Mid SE Grey Pine Green', sku: 'DC7294-103', price: '€85,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870018/WhatsApp_Image_2026-04-18_at_18.54.01_1_fqczo5.jpg'},
+            {name: 'Air Jordan 1 Mid Sonics', sku: '554725-371', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870183/WhatsApp_Image_2026-04-18_at_18.58.23_he7mdc.jpg'},
+            {name: 'Air Jordan 1 Mid', sku: '554724-122', price: '€90,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871063/WhatsApp_Image_2026-04-18_at_19.00.26_1_a2h5r9.jpg'},
+            {name: 'Air Jordan 1 Mid Gym Red Vermelho', sku: 'BQ6472-079', price: '€90,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776870955/WhatsApp_Image_2026-04-18_at_19.08.52_1_vgwgms.jpg'},
+            {name: 'Jordan 1 Mid Dia de los Muertos (GS)', sku: 'DC0500-100', price: '€100,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871162/WhatsApp_Image_2026-04-17_at_12.58.42_2_h76djk.jpg'},
+            {name: 'Air Jordan 1 Retro Low OG UNC', sku: 'CZ0775-104', price: '€80,00', size: '41', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871211/WhatsApp_Image_2026-04-18_at_19.02.50_1_wh0urc.jpg'},
+            {name: 'Air Jordan 1 Mid SE Dutch', sku: 'CZ0774-300', price: '€120,00', size: '41', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871247/WhatsApp_Image_2026-04-18_at_19.06.55_ltsaw8.jpg'},
+            {name: 'Air Jordan 1 Mid SE Newsprint', sku: 'DQ6078-100', price: '€85,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871286/WhatsApp_Image_2026-04-18_at_19.11.12_bmonzn.jpg'},
+            {name: 'Nike Dunk Low by Bernardo', sku: 'DO7413-991', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871325/WhatsApp_Image_2026-04-18_at_19.05.09_1_ute63e.jpg'},
+            {name: 'Nike Dunk Low Rose Whisper', sku: 'DD1503-118', price: '€75,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871362/WhatsApp_Image_2026-04-18_at_19.13.02_1_ayfvom.jpg'},
+            {name: 'Nike Dunk Low White Venice', sku: 'DD1503-116', price: '€90,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871399/WhatsApp_Image_2026-04-18_at_19.15.00_1_oveznf.jpg'},
+            {name: 'Air Jordan 1 Retro High OG Taxi Biqueira Amarela', sku: '555088-711', price: '€115,00', size: '42', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871438/WhatsApp_Image_2026-04-18_at_19.16.42_occ7ko.jpg'},
+            {name: 'Air Jordan 1 Retro High OG Heritage', sku: '555088-161', price: '€90,00', size: '40', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871475/WhatsApp_Image_2026-04-18_at_19.18.32_o6ftyj.jpg'},
+            {name: 'Nike Air Max', sku: 'CD0461-001', price: '€100,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871531/WhatsApp_Image_2026-04-22_at_10.42.59_o1yem1.jpg'},
+            {name: 'Adidas Campus 00s', sku: 'H03472', price: '€60,00', size: '39', url: 'https://res.cloudinary.com/duq0tf4da/image/upload/v1776871575/WhatsApp_Image_2026-04-18_at_19.19.56_e4hdnp.jpg'}
         ];
 
         function generateProducts() {
