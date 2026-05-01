@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Street Sole - Loja de Sneakers</title>
+    <title>Street Sole - Sneakers Collection 2026</title>
     <style>
         * {
             margin: 0;
@@ -12,181 +12,241 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
         }
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #333 0%, #555 100%);
             color: white;
             text-align: center;
             padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        .products {
+        .products-grid {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
         .card {
             background: white;
             border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         .card img {
             width: 100%;
-            height: 250px;
+            height: 350px;
             object-fit: cover;
         }
         .card-content {
             padding: 1.5rem;
         }
         .card h3 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: #222;
         }
-        .card p {
-            margin-bottom: 0.5rem;
-            color: #666;
-        }
-        .price {
+        .card .price {
             font-size: 1.5rem;
             font-weight: bold;
             color: #e74c3c;
-            margin: 1rem 0;
-        }
-        .sku {
-            background: #f8f9fa;
-            padding: 0.5rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #495057;
+            margin-bottom: 1rem;
         }
         .buy-btn {
             width: 100%;
+            padding: 1rem;
             background: #25D366;
             color: white;
             border: none;
-            padding: 1rem;
+            border-radius: 8px;
             font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 10px;
             cursor: pointer;
             transition: background 0.3s ease;
-            margin-top: 1rem;
         }
         .buy-btn:hover {
             background: #128C7E;
         }
         @media (max-width: 768px) {
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
             header h1 {
                 font-size: 2rem;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Street Sole</h1>
-        <p>A melhor loja de sneakers do pedaço! 🔥</p>
+        <h1>Street Sole - Sneakers Collection 2026</h1>
     </header>
-    <div class="container">
-        <div class="products">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Nike Air Jordan 1">
-                <div class="card-content">
-                    <h3>Nike Air Jordan 1 High</h3>
-                    <p>Clássico atemporal com design premium.</p>
-                    <div class="price">R$ 1.299,90</div>
-                    <p class="sku">SKU: SNK001</p>
-                    <button class="buy-btn" onclick="openWhatsApp('SNK001')">Comprar via WhatsApp</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1606890658317-7d1181e63bef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Adidas Yeezy Boost">
-                <div class="card-content">
-                    <h3>Adidas Yeezy Boost 350</h3>
-                    <p>Conforto e estilo em uma só peça.</p>
-                    <div class="price">R$ 1.799,90</div>
-                    <p class="sku">SKU: SNK002</p>
-                    <button class="buy-btn" onclick="openWhatsApp('SNK002')">Comprar via WhatsApp</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="New Balance 550">
-                <div class="card-content">
-                    <h3>New Balance 550</h3>
-                    <p>Retro vibe com tecnologia moderna.</p>
-                    <div class="price">R$ 899,90</div>
-                    <p class="sku">SKU: SNK003</p>
-                    <button class="buy-btn" onclick="openWhatsApp('SNK003')">Comprar via WhatsApp</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Puma RS-X">
-                <div class="card-content">
-                    <h3>Puma RS-X</h3>
-                    <p>Bold e futurista para o dia a dia.</p>
-                    <div class="price">R$ 749,90</div>
-                    <p class="sku">SKU: SNK004</p>
-                    <button class="buy-btn" onclick="openWhatsApp('SNK004')">Comprar via WhatsApp</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1543163528-9be3147e7a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Vans Old Skool">
-                <div class="card-content">
-                    <h3>Vans Old Skool</h3>
-                    <p>Ícone do skate, eterno clássico.</p>
-                    <div class="price">R$ 399,90</div>
-                    <p class="sku">SKU: SNK005</p>
-                    <button class="buy-btn" onclick="openWhatsApp('SNK005')">Comprar via WhatsApp</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1599388089548-86ee0d98d983?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Converse Chuck 70">
-                <div class="card-content">
-                    <h3>Converse Chuck 70</h3>
-                    <p>Canvas premium para qualquer ocasião.</p>
-                    <div class="price">R$ 449,90</div>
-                    <p class="sku">SKU: SNK006</p>
-                    <button class="buy-btn" onclick="openWhatsApp('SNK006')">Comprar via WhatsApp</button>
-                </div>
+    <main class="products-grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DM5329-200" alt="Nike Air Force 1/1 Animal Print">
+            <div class="card-content">
+                <h3>Nike Air Force 1/1 Animal Print</h3>
+                <div class="price">R$ 629,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DM5329-200')">Comprar</button>
             </div>
         </div>
-    </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DH3855-400" alt="Nike Air Force 1 Pixel Glacier">
+            <div class="card-content">
+                <h3>Nike Air Force 1 Pixel Glacier</h3>
+                <div class="price">R$ 649,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DH3855-400')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DC7294-103-40.5" alt="Air Jordan 1 Mid Grey Pine Green 40.5">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid Grey Pine Green 40.5</h3>
+                <div class="price">R$ 679,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DC7294-103-40.5')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DC7294-103" alt="Air Jordan 1 Mid Grey Pine Green 40">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid Grey Pine Green 40</h3>
+                <div class="price">R$ 679,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DC7294-103')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=554725-371" alt="Air Jordan 1 Mid Sonics">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid Sonics</h3>
+                <div class="price">R$ 699,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('554725-371')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=554724-122" alt="Air Jordan 1 Mid">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid</h3>
+                <div class="price">R$ 659,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('554724-122')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=BQ6472-079" alt="Air Jordan 1 Mid Gym Red 42">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid Gym Red 42</h3>
+                <div class="price">R$ 689,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('BQ6472-079')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DC0500-100" alt="Jordan 1 Mid Dia de los Muertos">
+            <div class="card-content">
+                <h3>Jordan 1 Mid Dia de los Muertos</h3>
+                <div class="price">R$ 729,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DC0500-100')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=CZ0775-104" alt="Air Jordan 1 Retro Low OG UNC">
+            <div class="card-content">
+                <h3>Air Jordan 1 Retro Low OG UNC</h3>
+                <div class="price">R$ 599,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('CZ0775-104')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=CZ0774-300" alt="Air Jordan 1 Mid SE Dutch">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid SE Dutch</h3>
+                <div class="price">R$ 669,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('CZ0774-300')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DQ6078-100" alt="Air Jordan 1 Mid SE Newsprint">
+            <div class="card-content">
+                <h3>Air Jordan 1 Mid SE Newsprint</h3>
+                <div class="price">R$ 649,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DQ6078-100')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DO7413-991" alt="Nike Dunk Low by Bernardo">
+            <div class="card-content">
+                <h3>Nike Dunk Low by Bernardo</h3>
+                <div class="price">R$ 749,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DO7413-991')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DD1503-118" alt="Nike Dunk Low Rose Whisper">
+            <div class="card-content">
+                <h3>Nike Dunk Low Rose Whisper</h3>
+                <div class="price">R$ 679,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DD1503-118')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=DD1503-116" alt="Nike Dunk Low White Venice">
+            <div class="card-content">
+                <h3>Nike Dunk Low White Venice</h3>
+                <div class="price">R$ 659,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('DD1503-116')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=555088-711" alt="Air Jordan 1 Retro High OG Taxi">
+            <div class="card-content">
+                <h3>Air Jordan 1 Retro High OG Taxi</h3>
+                <div class="price">R$ 899,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('555088-711')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=555088-161" alt="Air Jordan 1 Retro High OG Heritage">
+            <div class="card-content">
+                <h3>Air Jordan 1 Retro High OG Heritage</h3>
+                <div class="price">R$ 879,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('555088-161')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=CD0461-001" alt="Nike Air Max">
+            <div class="card-content">
+                <h3>Nike Air Max</h3>
+                <div class="price">R$ 799,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('CD0461-001')">Comprar</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/350x350/f8f9fa/495057?text=H03472" alt="Adidas Campus 00s">
+            <div class="card-content">
+                <h3>Adidas Campus 00s</h3>
+                <div class="price">R$ 549,99</div>
+                <button class="buy-btn" onclick="openWhatsApp('H03472')">Comprar</button>
+            </div>
+        </div>
+    </main>
     <script>
-        function openWhatsApp(sku) {
-            const message = `Olá, poderia me enviar mais fotos e informações sobre esse item (${sku})`;
-            const whatsappNumber = '351925659411';
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
+    function openWhatsApp(sku) {
+        const message = `Ol\u00e1, poderia me enviar mais fotos e informa\u00e7\u00f5es sobre esse item (${sku}).`;
+        const whatsappNumber = '351925659411';
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
     </script>
 </body>
 </html>
